@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users, cards, decks, decks_cards, keywords, keywords_cards;
+DROP TABLE IF EXISTS users;
 DROP SEQUENCE IF EXISTS seq_user_id;
 
 CREATE SEQUENCE seq_user_id
@@ -17,37 +17,10 @@ CREATE TABLE users (
 	role varchar(50) NOT NULL,
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
-
-CREATE TABLE cards (
-        card_id serial primary key,
-        question varchar(1000) NOT NULL,
-        answer varchar(1000) NOT NULL
-);
-
-CREATE TABLE keywords (
-        keyword_id serial primary key,
-        keyword varchar(25) NOT NULL
-);
-
-CREATE TABLE decks (
-        deck_id serial primary key,
-        deck_name varchar(25)
-);
-
-CREATE TABLE decks_cards (
-        deck_id int NOT NULL,
-        card_id int NOT NULL,
-        
-        constraint fk_decks_cards_deck_id foreign key (deck_id) references decks(deck_id),
-        constraint fk_decks_cards_card_id foreign key (card_id) references cards(card_id)
-);
-
-CREATE TABLE keywords_cards (
-        keyword_id int NOT NULL,
-        card_id int NOT NULL,
-        
-        constraint fk_keywords_cards_keyword_id foreign key (keyword_id) references keywords(keyword_id),
-        constraint fk_keywords_cards_card_id foreign key (card_id) references cards(card_id)
+CREATE TABLE card(
+card_id int DEFAULT nextval NOT NULL;
+question varchar(1000) NOT NULL;
+answer varchar(1000
 );
 
 
