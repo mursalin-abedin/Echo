@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users, cards, decks, decks_cards, keywords, keywords_cards;
+DROP TABLE IF EXISTS users;
 DROP SEQUENCE IF EXISTS seq_user_id;
 
 CREATE SEQUENCE seq_user_id
@@ -17,37 +17,10 @@ CREATE TABLE users (
 	role varchar(50) NOT NULL,
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
-
-CREATE TABLE cards (
-        card_id serial primary key,
-        question varchar(1000) NOT NULL,
-        answer varchar(1000) NOT NULL
-);
-
-CREATE TABLE keywords (
-        keyword_id serial primary key,
-        keyword varchar(25) NOT NULL
-);
-
-CREATE TABLE decks (
-        deck_id serial primary key,
-        deck_name varchar(25)
-);
-
-CREATE TABLE decks_cards (
-        deck_id int NOT NULL,
-        card_id int NOT NULL,
-        
-        constraint fk_decks_cards_deck_id foreign key (deck_id) references decks(deck_id),
-        constraint fk_decks_cards_card_id foreign key (card_id) references cards(card_id)
-);
-
-CREATE TABLE keywords_cards (
-        keyword_id int NOT NULL,
-        card_id int NOT NULL,
-        
-        constraint fk_keywords_cards_keyword_id foreign key (keyword_id) references keywords(keyword_id),
-        constraint fk_keywords_cards_card_id foreign key (card_id) references cards(card_id)
+CREATE TABLE card(
+card_id int DEFAULT nextval NOT NULL;
+question varchar(1000) NOT NULL;
+answer varchar(1000
 );
 
 
@@ -78,6 +51,13 @@ INSERT INTO cards (question, answer) VALUES ('"Fortunately, I have enough talent
 INSERT INTO cards (question, answer) VALUES ('"You''re good! You''re good! You''re good!"', 'Spongebob ');
 INSERT INTO cards (question, answer) VALUES ('"A five letter word for happiness…money."', 'Mr. Krabs');
 INSERT INTO cards (question, answer) VALUES ('"Please come again. When I''m not working."', ' Squidward');
+
+INSERT INTO cards (question, answer) VALUES ('What is the difference between procedural and object-oriented programs?', 'In procedural program, programming logic follows certain procedures and the instructions are executed one after another. In OOP program, unit of program is object, which is nothing but combination of data and code ');
+INSERT INTO cards (question, answer) VALUES ('What is OOPs?', 'Object oriented programming organizes a program around its data, i. e. , objects and a set of well defined interfaces to that data. An object-oriented program can be characterized as data controlling access to code. ');
+INSERT INTO cards (question, answer) VALUES ('What is the difference between constructor and method? ', ' Constructor will be automatically invoked when an object is created whereas method has to be called explicitly.');
+INSERT INTO cards (question, answer) VALUES ('What is the difference between superclass and subclass?', ' A super class is a class that is inherited whereas sub class is a class that does the inheriting.');
+INSERT INTO cards (question, answer) VALUES (' What is a package?', ' A package is a collection of classes and interfaces that provides a high-level layer of access protection and name space management.');
+INSERT INTO cards (question, answer) VALUES ('What is an abstract class? ', ' An abstract class is a class designed with implementation gaps for subclasses to fill in and is deliberately incomplete.');
 
 
 COMMIT TRANSACTION;
