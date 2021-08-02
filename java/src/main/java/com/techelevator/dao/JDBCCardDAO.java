@@ -22,7 +22,7 @@ public class JDBCCardDAO implements CardDAO {
     @Override
     public Card getCard(int cardId) {
         Card newCard = new Card();
-        String sql = "SELECT card_id, question, answer, user_id,  FROM cards WHERE card_id = ?";
+        String sql = "SELECT card_id, question, answer, user_id, keywords  FROM cards WHERE card_id = ?";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, cardId);
 
         while (rowSet.next()) {
@@ -35,8 +35,7 @@ public class JDBCCardDAO implements CardDAO {
     public List<Card> getAllCards() {
         List<Card> allCards = new ArrayList<>();
         try {
-            //String sql = "SELECT card_id, question, answer FROM cards";
-            String sql = "SELECT * FROM cards;";
+            String sql = "SELECT card_id, question, answer, user_id, keywords  FROM cards;";
             SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
 
             while (rowSet.next()) {
@@ -47,6 +46,23 @@ public class JDBCCardDAO implements CardDAO {
             System.out.println(ex.getMessage());
         }
         return allCards;
+    }
+
+    @Override
+    public List<Card> getAllCardsByUser(int userId) {
+        List<Card> allCardsByUser = new ArrayList<>();
+        try {
+            String sql = "SELECT card_id, question, answer, user_id, keywords  FROM cards WHERE user_id = ?;";
+            SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userId);
+
+            while (rowSet.next()) {
+                Card newCard = mapRowToCard(rowSet);
+                allCardsByUser.add(newCard);
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return allCardsByUser;
     }
 
     private Card mapRowToCard(SqlRowSet rowSet){
