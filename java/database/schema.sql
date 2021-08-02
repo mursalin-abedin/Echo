@@ -79,5 +79,12 @@ INSERT INTO cards (question, answer) VALUES ('"You''re good! You''re good! You''
 INSERT INTO cards (question, answer) VALUES ('"A five letter word for happiness…money."', 'Mr. Krabs');
 INSERT INTO cards (question, answer) VALUES ('"Please come again. When I''m not working."', ' Squidward');
 
+INSERT INTO cards (question, answer) VALUES ('What is the difference between procedural and object-oriented programs?', 'In procedural program, programming logic follows certain procedures and the instructions are executed one after another. In OOP program, unit of program is object, which is nothing but combination of data and code ');
+INSERT INTO cards (question, answer) VALUES ('What is OOPs?', 'Object oriented programming organizes a program around its data, i. e. , objects and a set of well defined interfaces to that data. An object-oriented program can be characterized as data controlling access to code. ');
+INSERT INTO cards (question, answer) VALUES ('What is the difference between constructor and method? ', ' Constructor will be automatically invoked when an object is created whereas method has to be called explicitly.');
+INSERT INTO cards (question, answer) VALUES ('What is the difference between superclass and subclass?', ' A super class is a class that is inherited whereas sub class is a class that does the inheriting.');
+INSERT INTO cards (question, answer) VALUES (' What is a package?', ' A package is a collection of classes and interfaces that provides a high-level layer of access protection and name space management.');
+INSERT INTO cards (question, answer) VALUES ('What is an abstract class? ', ' An abstract class is a class designed with implementation gaps for subclasses to fill in and is deliberately incomplete.');
+
 
 COMMIT TRANSACTION;
