@@ -54,5 +54,30 @@ CREATE TABLE keywords_cards (
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 
+INSERT INTO cards (question, answer) VALUES ('What year were the Boston Celtics founded?', 'Founded in 1946 as one of the league''s original eight teams, the Celtics are one of only two charter franchises (the other being the New York Knicks) still playing in their original city today.');
+INSERT INTO cards (question, answer) VALUES ('What is the name of the Boston Celtics'' mascot?', 'Lucky the Leprechaun');
+INSERT INTO cards (question, answer) VALUES ('Which Celtic was the first African-American player in the NBA?', 'On April 25, 1950, Chuck Cooper became the first African-American player drafted into the NBA when the Boston Celtics chose him with the 14th overall pick. When other teams suggested he shouldn''t be drafted because he was black, Celtics'' owner Walter A. Brown famously responded, "I don''t give a damn if he''s striped, plaid or polka dot. Boston takes Charles Cooper of Duquesne."');
+INSERT INTO cards (question, answer) VALUES ('Who is the oldest Celtics player to score 40 points in a game?', 'On December 19, 2012, at the age of 35 years, 2 months, and 6 days, Paul Pierce scored 40 points in a 103-91 win over the Cleveland Cavaliers.');
+INSERT INTO cards (question, answer) VALUES ('Who did the Boston Celtics select with the 3rd pick in the 2017 NBA Draft?', 'Jayson Tatum');
+
+INSERT INTO cards (question, answer) VALUES ('When was Shrek released?', '2001');
+INSERT INTO cards (question, answer) VALUES ('Who plays the voice of Shrek?', 'Mike Meyers');
+INSERT INTO cards (question, answer) VALUES ('What is the first word said in Shrek?', 'Once');
+INSERT INTO cards (question, answer) VALUES ('What is the first song in the movie Shrek?', 'All Star by Smash Mouth');
+INSERT INTO cards (question, answer) VALUES ('What does Donkey want to make Shrek for breakfast?', 'Waffles');
+
+INSERT INTO cards (question, answer) VALUES ('"I burned my hand, at night!"', 'Spongebob');
+INSERT INTO cards (question, answer) VALUES ('"Don''t you have to be stupid somewhere else?"', 'Sandy');
+INSERT INTO cards (question, answer) VALUES ('"The inner machinations of my mind are an enigma."', 'Patrick');
+INSERT INTO cards (question, answer) VALUES ('“Who you calling pinhead?”', 'Patrick');
+INSERT INTO cards (question, answer) VALUES ('"Did you smell it? That smell. A kind of smelly smell. The smelly smell that smells...smelly."', 'Mr. Krabs');
+INSERT INTO cards (question, answer) VALUES ('"I''m ugly and I''m proud!"', 'Spongebob ');
+INSERT INTO cards (question, answer) VALUES ('"If I were to die right now in a fiery explosion due to the carelessness of a friend…. Then it would just be alright."', 'Spongebob');
+INSERT INTO cards (question, answer) VALUES ('"Don’t you DARE take the name of Texas in vain."', 'Sandy');
+INSERT INTO cards (question, answer) VALUES ('"Fortunately, I have enough talent for all of you."', 'Squidward');
+INSERT INTO cards (question, answer) VALUES ('"You''re good! You''re good! You''re good!"', 'Spongebob ');
+INSERT INTO cards (question, answer) VALUES ('"A five letter word for happiness…money."', 'Mr. Krabs');
+INSERT INTO cards (question, answer) VALUES ('"Please come again. When I''m not working."', ' Squidward');
+
 
 COMMIT TRANSACTION;
