@@ -22,7 +22,7 @@ public class JDBCCardDAO implements CardDAO {
     @Override
     public Card getCard(int cardId) {
         Card newCard = new Card();
-        String sql = "SELECT card_id, question, answer FROM cards WHERE card_id = ?";
+        String sql = "SELECT card_id, question, answer, user_id,  FROM cards WHERE card_id = ?";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, cardId);
 
         while (rowSet.next()) {
@@ -54,7 +54,8 @@ public class JDBCCardDAO implements CardDAO {
         newCard.setCardId(rowSet.getInt("card_id"));
         newCard.setQuestion(rowSet.getString("question"));
         newCard.setAnswer(rowSet.getString("answer"));
-//        newCard.setUserId(rowSet.getInt("user_id"));
+        newCard.setUserId(rowSet.getInt("user_id"));
+        newCard.setKeywords(rowSet.getString("keywords"));
         return newCard;
     }
 
