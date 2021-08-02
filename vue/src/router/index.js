@@ -6,6 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import Card from '../views/Card.vue'
+import Cards from '../views/Cards.vue'
 Vue.use(Router)
 
 /**
@@ -54,13 +55,21 @@ const router = new Router({
       }
     },
     {
-      path:"/cards/:id",
-      name:"card",
-      component:Card,
-      meta:{
-        requiresAuth:false
+      path: "/cards/",
+      name: "Cards",
+      component: Cards,
+      meta: {
+        requiresAuth: false
       }
     },
+    {
+      path: "/cards/:id",
+      name: "Card",
+      component: Card,
+      meta: {
+        requiresAuth: false
+      }
+    },  
   ]
 })
 

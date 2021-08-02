@@ -1,7 +1,10 @@
 import axios from 'axios';
 
 export default {
+    getAllCards(){
+        return axios.get('/cards')
+    },
     getCard() {
-        return axios.get('/card/:id')
+        return axios.get('/cards/:id')
     }
 }
