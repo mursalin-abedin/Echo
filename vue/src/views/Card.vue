@@ -1,14 +1,14 @@
 <template>
   <div @click="isToggle = !isToggle" v-bind:style="{backgroundColor: colorFront,color:colorTextFront}" v-show="!isToggle" class="animated flip">
 <!-- class for team to edit-->
-<h1>TEST</h1>
-    <div class="card-content">
+<h1>{{cards.question}}</h1>
+    <!-- <div class="card-content">
       <p v-bind="card.id">{{ front }}</p>
     </div>
 
     <div class="card-content">
       <p v-bind="card.id">{{ back }}</p>
-    </div>
+    </div> -->
   </div>
 </template>
 

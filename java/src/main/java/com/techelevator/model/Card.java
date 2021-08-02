@@ -5,7 +5,7 @@ public class Card {
     private String question;
     private String answer;
     private int userId;
-    private String[] keywords;
+    private String keywords;
 
     public Card() {
     }
@@ -14,8 +14,8 @@ public class Card {
         this.cardId = cardId;
         this.question = question;
         this.answer = answer;
-//        this.userId = userId;
-//        this.keywords = keywords;
+        this.userId = userId;
+        this.keywords = keywords;
     }
 
     public int getCardId() {
@@ -50,11 +50,11 @@ public class Card {
         this.userId = userId;
     }
 
-    public String[] getKeywords() {
+    public String getKeywords() {
         return keywords;
     }
 
-    public void setKeywords(String[] keywords) {
+    public void setKeywords(String keywords) {
         this.keywords = keywords;
     }
 }
