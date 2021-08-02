@@ -4,6 +4,8 @@ import com.techelevator.model.Card;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
+
+import java.rmi.server.ExportException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,12 +34,17 @@ public class JDBCCardDAO implements CardDAO {
     @Override
     public List<Card> getAllCards() {
         List<Card> allCards = new ArrayList<>();
-        String sql = "SELECT card_id, question, answer FROM cards";
-        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
+        try {
+            //String sql = "SELECT card_id, question, answer FROM cards";
+            String sql = "SELECT * FROM cards;";
+            SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
 
-        while (rowSet.next()) {
-            Card newCard = mapRowToCard(rowSet);
-            allCards.add(newCard);
+            while (rowSet.next()) {
+                Card newCard = mapRowToCard(rowSet);
+                allCards.add(newCard);
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
         return allCards;
     }
