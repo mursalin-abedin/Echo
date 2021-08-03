@@ -31,10 +31,10 @@ public class DeckController {
         deckDAO.deleteDeck(deckId);
     }
 
-//    @ResponseStatus(HttpStatus.CREATED)
-//    @RequestMapping( path = "/cards", method = RequestMethod.POST)
-//    public Deck createDeck(Deck newDeck) {
-//        return deckDAO.createDeck(newDeck.getDeckName());
-//    }
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping( path = "/decks", method = RequestMethod.POST)
+    public void createDeck(@RequestBody Deck deck) {
+        deckDAO.createDeck(deck.getDeckName(), deck.getDeckDescription());
+    }
 
 }

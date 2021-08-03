@@ -6,14 +6,12 @@ import java.util.List;
 
 public interface DeckDAO {
 
-
-
     Deck getDeckById(int deckId);
 
     List<Deck> getAllDecks();
 
     void deleteDeck(int deckId);
 
-//    Deck createDeck(String deckName);
+    void createDeck(String deckName, String deckDescription);
 
 }

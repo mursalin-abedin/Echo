@@ -19,7 +19,7 @@ public class JDBCDeckDAO implements DeckDAO{
     @Override
     public Deck getDeckById(int deckId) {
         Deck deck = new Deck();
-        String sql = "SELECT deck_id, deck_name FROM decks WHERE deck_id = ?";
+        String sql = "SELECT deck_id, deck_name, deck_description, user_id FROM decks WHERE deck_id = ?";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, deckId);
 
         while (rowSet.next()) {
@@ -32,7 +32,7 @@ public class JDBCDeckDAO implements DeckDAO{
     public List<Deck> getAllDecks() {
         List<Deck> allDecks = new ArrayList<>();
         try {
-            String sql = "SELECT deck_id, deck_name FROM decks";
+            String sql = "SELECT deck_id, deck_name, deck_description, user_id FROM decks";
             SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
 
             while (rowSet.next()) {
@@ -54,23 +54,18 @@ public class JDBCDeckDAO implements DeckDAO{
         jdbcTemplate.update(sqlForDecksTable, deckId);
     }
 
-//    @Override
-//    public Deck createDeck(String deckName) {
-//        Deck newDeck = new Deck();
-//        String sql = "INSERT INTO decks (deck_id, deckName) VALUES (DEFAULT, ?) RETURNING deck_id";
-//        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, deckName);
-//
-//        while (rowSet.next()) {
-//            newDeck = mapRowToDeck(rowSet);
-//        }
-//
-//        return newDeck;
-//    }
+    @Override
+    public void createDeck(String deckName, String deckDescription) {
+        String sql = "INSERT INTO decks (deck_id, deck_name, deck_description, user_id) VALUES (DEFAULT, ?, ?, 1)";
+        jdbcTemplate.update(sql, deckName, deckDescription);
+    }
 
     private Deck mapRowToDeck(SqlRowSet rowSet) {
         Deck deck = new Deck();
         deck.setDeckId(rowSet.getInt("deck_id"));
         deck.setDeckName(rowSet.getString("deck_name"));
+        deck.setDeckDescription(rowSet.getString("deck_description"));
+        deck.setUserId(rowSet.getInt("user_id"));
         return deck;
     }
 
