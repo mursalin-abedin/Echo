@@ -26,6 +26,7 @@ public class JDBCCardDAO implements CardDAO {
         while (rowSet.next()) {
             card = mapRowToCard(rowSet);
         }
+
         return card;
     }
 
@@ -61,6 +62,22 @@ public class JDBCCardDAO implements CardDAO {
             System.out.println(ex.getMessage());
         }
         return allCardsByUser;
+    }
+
+    @Override
+    public List<Card> getAllCardsByDeckId(int deckId) {
+        List<Card> allCardsByDeckId = new ArrayList<>();
+        String sql = "SELECT cards.card_id, cards.question, cards.answer, cards.keywords, cards.user_id " +
+                "FROM cards JOIN decks_cards ON decks_cards.card_id = cards.card_id JOIN decks ON" +
+                " decks.deck_id = decks_cards.deck_id WHERE decks.deck_id = ?";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, deckId);
+
+        while (rowSet.next()) {
+            Card card = mapRowToCard(rowSet);
+            allCardsByDeckId.add(card);
+        }
+
+        return allCardsByDeckId;
     }
 
     @Override

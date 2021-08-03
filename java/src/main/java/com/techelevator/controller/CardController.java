@@ -31,6 +31,11 @@ public class CardController {
         return cardDAO.getAllCardsByUserId(userId);
     }
 
+    @RequestMapping(path = "/decks/{deckId}/cards", method = RequestMethod.GET)
+    public List<Card> getAllCardsByDeckId(@PathVariable int deckId) {
+        return cardDAO.getAllCardsByDeckId(deckId);
+    }
+
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(path = "/cards/{cardId}", method = RequestMethod.DELETE)
     public void deleteCard(@PathVariable int cardId) {

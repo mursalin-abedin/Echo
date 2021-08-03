@@ -11,6 +11,8 @@ public interface CardDAO {
 
     List<Card> getAllCardsByUserId(int userId);
 
+    List<Card> getAllCardsByDeckId(int deckId);
+
     void deleteCard(int cardId);
 
 //    Card createCard(String question, String answer, String keywords, int userId);
