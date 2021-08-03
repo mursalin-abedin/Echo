@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 //@PreAuthorize("permitAll")
+@CrossOrigin
 @RestController
 public class CardController {
     private CardDAO cardDAO;
