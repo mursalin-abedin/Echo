@@ -1,26 +1,26 @@
 <template>
     <div class="mainappbody">
         <Nav />
-        <Decklist :decks="decks" 
+        <DeckList :decks="decks" 
             @add-new-deck="addNewDeck" 
             @get-deck="getDeck" 
         />
-        <Cards :cards="cards" />
+        <CardList :cards="cards" />
     </div>
 </template>
 
 <script>
     import Nav from '../components/Nav'
-    import Decklist from '../components/Decklist'
-    import Cards from '../components/Cards'
+    import DeckList from '../components/DeckList'
+    import CardList from '../components/CardList'
     import DeckService from '../services/DeckService'
     import CardService from '../services/CardService'
 
     export default {
         name: 'Home',
         components: {
-            Decklist,
-            Cards,
+            DeckList,
+            CardList,
             Nav
         },
         data(){

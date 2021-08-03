@@ -12,7 +12,7 @@
 import Newdeck from '../components/Newdeck'
 
 export default {
-    name:'Decklist',
+    name:'DeckList',
     props: {
         decks: Array
     },

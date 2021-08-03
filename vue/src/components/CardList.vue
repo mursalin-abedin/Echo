@@ -11,7 +11,7 @@
 import Card from "../components/Card"
 
 export default {
-    name:'Cards',
+    name:'CardList',
     props: {
         cards: Array
     },

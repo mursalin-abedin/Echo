@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../views/Home.vue'
-// import Login from '../views/Login.vue'
-// import Logout from '../views/Logout.vue'
-// import Register from '../views/Register.vue'
-// import store from '../store/index'
-// import Card from '../views/Card.vue'
-// import Cards from '../views/Cards.vue'
+// import Login from '../view/Login.vue'
+// import Logout from '../view/Logout.vue'
+// import Register from '../view/Register.vue'
+import store from '../store/index'
+// import Card from '../components/Card.vue'
+// import CardList from '../components/CardList.vue'
 Vue.use(Router)
 
 /**
@@ -56,8 +56,8 @@ const router = new Router({
     // },
     // {
     //   path: "/cards/",
-    //   name: "Cards",
-    //   component: Cards,
+    //   name: "CardList",
+    //   component: CardList,
     //   meta: {
     //     requiresAuth: false
     //   }
@@ -73,17 +73,17 @@ const router = new Router({
   ]
 })
 
-// router.beforeEach((to, from, next) => {
-//   // Determine if the route requires Authentication
-//   const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
+router.beforeEach((to, from, next) => {
+  // Determine if the route requires Authentication
+  const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
 
-//   // If it does and they are not logged in, send the user to "/login"
-//   if (requiresAuth && store.state.token === '') {
-//     next("/login");
-//   } else {
-//     // Else let them go to their next destination
-//     next();
-//   }
-// });
+  // If it does and they are not logged in, send the user to "/login"
+  if (requiresAuth && store.state.token === '') {
+    next("/login");
+  } else {
+    // Else let them go to their next destination
+    next();
+  }
+});
 
 export default router;
