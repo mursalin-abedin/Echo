@@ -4,13 +4,14 @@ public class Card {
     private int cardId;
     private String question;
     private String answer;
-    private int userId;
     private String keywords;
+    private int userId;
+
 
     public Card() {
     }
 
-    public Card(int cardId, String question, String answer) {
+    public Card(int cardId, String question, String answer, String keywords, int userId) {
         this.cardId = cardId;
         this.question = question;
         this.answer = answer;
