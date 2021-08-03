@@ -89,18 +89,14 @@ public class JDBCCardDAO implements CardDAO {
         jdbcTemplate.update(sqlForCardsTable, cardId);
     }
 
-//    @Override
-//    public Card createCard(String question, String answer, String keywords, int userId) {
-//        Card newCard = new Card();
-//        String sql = "INSERT INTO cards (card_id, question, answer, keywords, user_id) VALUES (DEFAULT, ?, ?, ?, ?) RETURNING card_id";
-//        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, question, answer, keywords, userId);
-//
-//        while (rowSet.next()) {
-//            newCard = mapRowToCard(rowSet);
-//        }
-//
-//        return newCard;
-//    }
+    @Override
+    public void createCard(String question, String answer, String keywords) {
+        String sql = "INSERT INTO cards (card_id, question, answer, keywords, user_id) VALUES (DEFAULT, ?, ?, ?, 1)";
+        System.out.println(question);
+        jdbcTemplate.update(sql, question, answer, keywords);
+
+
+    }
 
     private Card mapRowToCard(SqlRowSet rowSet) {
         Card card = new Card();

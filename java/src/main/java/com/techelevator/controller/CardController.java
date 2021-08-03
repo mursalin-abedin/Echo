@@ -42,11 +42,11 @@ public class CardController {
         cardDAO.deleteCard(cardId);
     }
 
-//    @ResponseStatus(HttpStatus.CREATED)
-//    @RequestMapping( path = "/cards", method = RequestMethod.POST)
-//    public Card createCard(Card newCard) {
-//        return cardDAO.createCard(newCard.getQuestion(), newCard.getAnswer(), newCard.getKeywords(), newCard.getUserId());
-//    }
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping( path = "/cards", method = RequestMethod.POST)
+    public void createCard(String question, String answer, String keywords) {
+        cardDAO.createCard(question, answer, keywords);
+    }
 
 
 }
