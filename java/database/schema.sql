@@ -21,7 +21,7 @@ CREATE TABLE cards(
         card_id serial PRIMARY KEY,
         question varchar(1000) NOT NULL,
         answer varchar(1000) NOT NULL,
-        keywords varchar(1000) NOT NULL,
+        keywords varchar(1000),
         user_id int NOT NULL,
         
         CONSTRAINT fk_cards_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
@@ -29,7 +29,11 @@ CREATE TABLE cards(
 
 CREATE TABLE decks(
         deck_id serial PRIMARY KEY,
-        deck_name varchar(100)
+        deck_name varchar(100) NOT NULL,
+        deck_description varchar(1000),
+        user_id int NOT NULL,
+        
+        CONSTRAINT fk_decks_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
 CREATE TABLE decks_cards(
@@ -46,7 +50,7 @@ INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULi
 
 INSERT INTO cards (question, answer, keywords, user_id) VALUES ('What year were the Boston Celtics founded?', 'Founded in 1946 as one of the league''s original eight teams, the Celtics are one of only two charter franchises (the other being the New York Knicks) still playing in their original city today.', 'Celtics', 1);
 INSERT INTO cards (question, answer, keywords, user_id) VALUES ('What is the name of the Boston Celtics'' mascot?', 'Lucky the Leprechaun', 'Celtics', 1);
-INSERT INTO cards (question, answer, keywords, user_id) VALUES ('Which Celtic was the first African-American player in the NBA?', 'On April 25, 1950, Chuck Cooper became the first African-American player drafted into the NBA when the Boston Celtics chose him with the 14th overall pick. When other teams suggested he shouldn''t be drafted because he was black, Celtics'' owner Walter A. Brown famously responded, "I don''t give a damn if he''s striped, plaid or polka dot. Boston takes Charles Cooper of Duquesne."', 'Celtics', 1);
+INSERT INTO cards (question, answer, keywords, user_id) VALUES ('Which Celtic was the first African-American player in the NBA?', 'On April 25, 1950, Chuck Cooper became the first African-American player drafted into the NBA when the Boston Celtics chose him with the 14th overall pick.', 'Celtics', 1);
 INSERT INTO cards (question, answer, keywords, user_id) VALUES ('Who is the oldest Celtics player to score 40 points in a game?', 'On December 19, 2012, at the age of 35 years, 2 months, and 6 days, Paul Pierce scored 40 points in a 103-91 win over the Cleveland Cavaliers.', 'Celtics', 1);
 INSERT INTO cards (question, answer, keywords, user_id) VALUES ('Who did the Boston Celtics select with the 3rd pick in the 2017 NBA Draft?', 'Jayson Tatum', 'Celtics', 1);
 
@@ -76,10 +80,10 @@ INSERT INTO cards (question, answer, keywords, user_id) VALUES ('What is the dif
 INSERT INTO cards (question, answer, keywords, user_id) VALUES (' What is a package?', ' A package is a collection of classes and interfaces that provides a high-level layer of access protection and name space management.', 'Coding', 1);
 INSERT INTO cards (question, answer, keywords, user_id) VALUES ('What is an abstract class? ', ' An abstract class is a class designed with implementation gaps for subclasses to fill in and is deliberately incomplete.', 'Coding', 1);
 
-INSERT INTO decks (deck_name) VALUES ('Celtics Facts');
-INSERT INTO decks (deck_name) VALUES ('Shrek Facts');
-INSERT INTO decks (deck_name) VALUES ('SpongeBob Quotes');
-INSERT INTO decks (deck_name) VALUES ('Coding Questions');
+INSERT INTO decks (deck_name, deck_description, user_id) VALUES ('Celtics Facts', 'Test your knowledge on the greatest NBA Franchise of all time!', 1);
+INSERT INTO decks (deck_name, deck_description, user_id) VALUES ('Shrek Facts', 'Test your knowledge on the greatest animated film of all time!', 1);
+INSERT INTO decks (deck_name, deck_description, user_id) VALUES ('SpongeBob Quotes', 'Who said what from the animated series Spongebob Squarepants', 1);
+INSERT INTO decks (deck_name, deck_description, user_id) VALUES ('Coding Questions', 'Test your knowledge on coding!', 1);
 
 INSERT INTO decks_cards (deck_id, card_id) VALUES (1, 1);
 INSERT INTO decks_cards (deck_id, card_id) VALUES (1, 2);
