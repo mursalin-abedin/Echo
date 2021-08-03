@@ -1,5 +1,6 @@
 <template>
     <div class="mainappbody">
+        <Nav />
         <Decklist :decks="decks" 
             @add-new-deck="addNewDeck" 
             @get-deck="getDeck" 
@@ -9,6 +10,7 @@
 </template>
 
 <script>
+    import Nav from '../components/Nav'
     import Decklist from '../components/Decklist'
     import Cards from '../components/Cards'
     import DeckService from '../services/DeckService'
@@ -18,7 +20,8 @@
         name: 'Home',
         components: {
             Decklist,
-            Cards
+            Cards,
+            Nav
         },
         data(){
             return {
