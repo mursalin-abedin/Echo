@@ -29,14 +29,22 @@
                 cards: []
             }
         },
+        methods:{
+            getDeck(deckId){
+                CardService.getCardByDeck(deckId).then(resp => {
+                    this.cards = resp.data
+                })
+            },
+            addNewDeck(){
+                CardService.getAllCards().then(resp => {
+               this.cards = resp.data
+           });
+            }
+        },
         created(){
            DeckService.getAllDecks().then(resp => {
                this.decks = resp.data
            });
-           CardService.getAllCards().then(resp => {
-               this.cards = resp.data
-           });
-        
         }
 
         

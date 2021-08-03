@@ -1,6 +1,6 @@
 <template>
     <div class="decklist">
-        <Newdeck @add-new-deck="$emit('add-new-deck')" />
+        <NewDeck @add-new-deck="$emit('add-new-deck')" />
         <div v-for="deck in decks" :key="deck.deckId">
             <div class="deck" @click="$emit('get-deck', deck.deckId)">{{deck.deckName}}</div>
         </div>
@@ -9,7 +9,7 @@
 
 
 <script>
-import Newdeck from '../components/Newdeck'
+import NewDeck from '../components/NewDeck'
 
 export default {
     name:'DeckList',
@@ -17,7 +17,7 @@ export default {
         decks: Array
     },
     components: {
-        Newdeck
+        NewDeck
     }
 }
 </script>
