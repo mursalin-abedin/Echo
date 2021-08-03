@@ -8,7 +8,6 @@
             </div>
 
             <div class="topmenubox">
-                <!-- <div class="space"></div> -->
                 <div class="user icon">user</div>
             </div>
         </div>
