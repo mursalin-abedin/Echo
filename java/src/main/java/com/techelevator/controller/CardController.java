@@ -45,6 +45,6 @@ public class CardController {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping( path = "/cards", method = RequestMethod.POST)
     public void createCard(@RequestBody Card card) {
-        cardDAO.createCard(card.getQuestion(), card.getAnswer(), card.getKeywords());
+        cardDAO.createCard(card.getQuestion(), card.getAnswer(), card.getKeywords(), card.getDeckId());
     }
 }

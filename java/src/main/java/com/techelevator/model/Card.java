@@ -6,17 +6,19 @@ public class Card {
     private String answer;
     private String keywords;
     private int userId;
+    private int deckId;
 
 
     public Card() {
     }
 
-    public Card(int cardId, String question, String answer, String keywords, int userId) {
+    public Card(int cardId, String question, String answer, String keywords, int userId, int deckId) {
         this.cardId = cardId;
         this.question = question;
         this.answer = answer;
         this.userId = userId;
         this.keywords = keywords;
+        this.deckId = deckId;
     }
 
     public int getCardId() {
@@ -57,5 +59,13 @@ public class Card {
 
     public void setKeywords(String keywords) {
         this.keywords = keywords;
+    }
+
+    public int getDeckId() {
+        return deckId;
+    }
+
+    public void setDeckId(int deckId) {
+        this.deckId = deckId;
     }
 }

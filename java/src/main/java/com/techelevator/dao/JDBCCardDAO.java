@@ -90,9 +90,11 @@ public class JDBCCardDAO implements CardDAO {
     }
 
     @Override
-    public void createCard(String question, String answer, String keywords) {
-        String sql = "INSERT INTO cards (card_id, question, answer, keywords, user_id) VALUES (DEFAULT, ?, ?, ?, 1)";
+    public void createCard(String question, String answer, String keywords, int deckId) {
+        String sql = "INSERT INTO cards (card_id, question, answer, keywords, user_id) VALUES (DEFAULT, ?, ?, ?, 1);";
+        String sql2 = "INSERT INTO decks_cards (deck_id, card_id) VALUES (?,(SELECT MAX(card_id) FROM cards));";
         jdbcTemplate.update(sql, question, answer, keywords);
+        jdbcTemplate.update(sql2, deckId);
 
     }
 

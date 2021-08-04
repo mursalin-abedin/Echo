@@ -50,15 +50,16 @@ export default {
         alert('Please fill the blanks')
         return
       }
-      const newCard = {
+      const ncard = {
         question: this.question,
         answer: this.answer,
         keywords: this.keywords,
       }
-        this.$emit('add-card', newCard)
-        this.question = ''
-        this.answer = ''
-        this.keywords = ''
+      console.log("Created Ncard:" + ncard.question)
+        this.$emit('add-card', ncard)
+        //this.question = ''
+        //this.answer = ''
+        //this.keywords = ''
     },
   },
 }

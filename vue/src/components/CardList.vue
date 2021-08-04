@@ -1,6 +1,6 @@
 <template>
     <div class="cardbox" >
-        <NewCard @add-card="$emit('add-card', newCard)" />
+        <NewCard v-if="deckSelected" @add-card="repeatCard" />
         <div v-for="card in cards" :key="card.cardId">
             <Card :card="card"/>
         </div>
@@ -15,11 +15,18 @@ import NewCard from "../components/NewCard"
 export default {
     name:'CardList',
     props: {
-        cards: Array
+        cards: Array,
+        ncard: Object,
+        deckSelected: Boolean
     },
     components: {
         Card,
         NewCard
+    },
+    methods: {
+        repeatCard(ncard){
+            this.$emit('add-card', ncard)
+        }
     }
 }
 </script>
