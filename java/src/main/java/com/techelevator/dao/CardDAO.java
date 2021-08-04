@@ -17,4 +17,9 @@ public interface CardDAO {
 
     void createCard(String question, String answer, String keywords, int deckId);
 
+    void updateCard(String question, String answer, String keywords, int cardId);
+
+
+    void removeCardFromDeck(int deckId, int cardId);
+
 }

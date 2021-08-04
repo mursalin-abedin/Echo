@@ -98,6 +98,18 @@ public class JDBCCardDAO implements CardDAO {
 
     }
 
+    @Override
+    public void updateCard(String question, String answer, String keywords, int cardId) {
+        String sql = "UPDATE cards SET question = ?, answer = ?, keywords = ?, user_id = 1 WHERE card_id = ?";
+        jdbcTemplate.update(sql, question, answer, keywords, cardId);
+    }
+
+    @Override
+    public void removeCardFromDeck(int deckId, int cardId) {
+        String sql = "DELETE FROM decks_cards WHERE deck_id = ? AND card_id = ?";
+        jdbcTemplate.update(sql, deckId, cardId);
+    }
+
     private Card mapRowToCard(SqlRowSet rowSet) {
         Card card = new Card();
         card.setCardId(rowSet.getInt("card_id"));

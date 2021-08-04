@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.CardDAO;
 import com.techelevator.model.Card;
+import com.techelevator.model.Deck;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -47,4 +48,16 @@ public class CardController {
     public void createCard(@RequestBody Card card) {
         cardDAO.createCard(card.getQuestion(), card.getAnswer(), card.getKeywords(), card.getDeckId());
     }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping( path = "/cards/{cardId}", method = RequestMethod.PUT)
+    public void updateCard(@RequestBody Card card) {
+        cardDAO.updateCard(card.getQuestion(), card.getAnswer(), card.getKeywords(), card.getCardId());
+    }
+
+    @RequestMapping(path = "/decks/{deckId}/cards", method = RequestMethod.DELETE)
+    public void removeCardFromDeck(@RequestBody Card card) {
+        cardDAO.removeCardFromDeck(card.getDeckId(), card.getCardId());
+    }
+
 }

@@ -60,6 +60,12 @@ public class JDBCDeckDAO implements DeckDAO{
         jdbcTemplate.update(sql, deckName, deckDescription);
     }
 
+    @Override
+    public void updateDeck(String deckName, String deckDescription, int deckId) {
+        String sql = "UPDATE decks SET deck_name = ?, deck_description = ? WHERE deck_id = ?";
+        jdbcTemplate.update(sql, deckName, deckDescription, deckId);
+    }
+
     private Deck mapRowToDeck(SqlRowSet rowSet) {
         Deck deck = new Deck();
         deck.setDeckId(rowSet.getInt("deck_id"));

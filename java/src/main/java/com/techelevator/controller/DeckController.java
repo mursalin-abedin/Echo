@@ -37,4 +37,10 @@ public class DeckController {
         deckDAO.createDeck(deck.getDeckName(), deck.getDeckDescription());
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping( path = "/decks/{deckId}", method = RequestMethod.PUT)
+    public void updateDeck(@RequestBody Deck deck) {
+        deckDAO.updateDeck(deck.getDeckName(), deck.getDeckDescription(), deck.getDeckId());
+    }
+
 }
