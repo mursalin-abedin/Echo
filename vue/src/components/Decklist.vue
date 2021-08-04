@@ -4,9 +4,10 @@
         <div class="echo"><div class="icon"><i class="fas fa-user-astronaut echoicon"></i></div><div class="echotext">Echo</div></div>
         <NewDeck @show-new-deck-form="$emit('show-new-deck-form')" />
         <div v-for="deck in decks" :key="deck.deckId">
-            <div :class="(selectedDeck == deck.deckId) ? 'deckbuttonselected' : 'deckbutton'" >
+            <div :class="(selectedDeck == deck.deckId) ? 'deckbuttonselected' : 'deckbutton'" 
+            @click="$emit('get-deck', deck.deckId); setSelectedDeck(deck.deckId)">
                 <div class="deckicon"><i class="fas fa-layer-group"></i></div>
-                <div class="deck" @click="$emit('get-deck', deck.deckId); setSelectedDeck(deck.deckId)" >{{deck.deckName}}</div>
+                <div class="deck"  >{{deck.deckName}}</div>
             </div>
         </div>
     </div>

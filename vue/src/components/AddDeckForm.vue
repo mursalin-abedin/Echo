@@ -6,11 +6,11 @@
     </h2>
      <form @submit="onSubmit" class="add-deck">
     <div class="form-control">
-      <label>Name</label>
+      <label>Name:</label>
       <input type="text" v-model="deckName" name="deckName" placeholder="Name your deck!" />
     </div>
     <div class="form-control">
-      <label>Description</label>
+      <label>Description:</label>
       <input
         type="text"
         v-model="deckDescription"
@@ -56,12 +56,13 @@ export default {
 <style scoped>
 
 .card {
+
   display: block;
   background-color: transparent;
   width: 300px;
   height: 300px;
   border: 2px solid lightgray;
-  margin: 10px;
+  margin: 10px 30px;
   border-radius: 10px;
   font-family: Arial, Helvetica, sans-serif;
 }
