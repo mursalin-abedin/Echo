@@ -33,8 +33,9 @@ export default {
     display: flex;
     flex-direction: column;
     min-width: 300px;
-    min-height: 800px;
-    background-color: #108cee
+    background-color: #108cee;
+    height: 100vh;
+
 }
 
 .deckbutton {

@@ -1,5 +1,6 @@
 <template>
-  <div class="header"> Helloooooooo</div>
+  <div class="header">
+  </div>
 
 </template>
 
@@ -15,8 +16,9 @@ export default {
      display: flex;
      flex-direction: row;
      width: 100%;
-     height:20pt;
-
-    background-color: rgb(69, 69, 202);
+     height:80px;
+     position: absolute;
+     margin-bottom: 20pt;
+    background-color:#108CEE;
  }
 </style>

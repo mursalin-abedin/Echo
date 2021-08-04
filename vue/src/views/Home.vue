@@ -88,6 +88,7 @@
     flex-direction:column;
 }
 .centerpage{
-    width:100%
+    width:100%;
+     margin-top:82px;
 }
 </style>
