@@ -2,16 +2,15 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.CardDAO;
 import com.techelevator.model.Card;
-<<<<<<< Updated upstream
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-=======
+
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
->>>>>>> Stashed changes
 import java.util.List;
 
 //@PreAuthorize("permitAll")
@@ -24,18 +23,13 @@ public class CardController {
         this.cardDAO = cardDAO;
     }
 
-<<<<<<< Updated upstream
     @RequestMapping(path = "/cards/{cardId}", method = RequestMethod.GET)
     public Card getCardById(@PathVariable int cardId) {
         return cardDAO.getCardById(cardId);
     }
-
     @RequestMapping(path = "/cards", method = RequestMethod.GET)
     public List<Card> getAllCards() {
-=======
-    @RequestMapping(path = "/cards", method = RequestMethod.GET)
-    public List<Card> getAllCards(){
->>>>>>> Stashed changes
+
         return cardDAO.getAllCards();
     }
 
