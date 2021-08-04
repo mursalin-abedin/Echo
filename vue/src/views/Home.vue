@@ -41,9 +41,10 @@
                 ncard.deckId = this.currentDeckId
                 console.log("NCARD:" + ncard)
                 CardService.createCard(ncard).then(resp => {
-                    console.log(resp);
+                    console.log(resp)
+                    this.getDeck(this.currentDeckId)
            });
-            this.getDeck(this.currentDeckId)
+           
             }
         },
         created(){
