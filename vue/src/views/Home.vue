@@ -4,10 +4,16 @@
             @show-new-deck-form="showAddNewDeckForm" 
             @get-deck="getDeck" 
         />
-        <AddDeckForm v-if="!currentDeckId"
-            @add-deck="addNewDeck" />
+          
+       <div class="rightside">
+         <div><Header/></div>
+       <div class=centerpage><AddDeckForm  v-if="!currentDeckId"
+            @add-deck="addNewDeck" />   
         <CardList v-if="currentDeckId" :cards="cards" @add-card="addNewCard" />
+          </div>
+          </div> 
     </div>
+
 </template>
 
 <script>
@@ -16,13 +22,15 @@
     import DeckService from '../services/DeckService'
     import CardService from '../services/CardService'
     import AddDeckForm from '../components/AddDeckForm'
+    import Header from '../components/Header'
 
     export default {
         name: 'Home',
         components: {
             DeckList,
             CardList,
-            AddDeckForm
+            AddDeckForm,
+            Header,
         },
         data(){
             return {
@@ -74,5 +82,12 @@
 <style scoped>
 .mainappbody {
   display: flex;
+}
+.rightside{
+    display:flex;
+    flex-direction:column;
+}
+.centerpage{
+    width:100%
 }
 </style>

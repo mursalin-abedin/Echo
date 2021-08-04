@@ -32,7 +32,7 @@ export default {
 .decklist {
     display: flex;
     flex-direction: column;
-    min-width: 200px;
+    min-width: 300px;
     min-height: 800px;
     background-color: #108cee
 }
