@@ -57,7 +57,6 @@ export default {
   background-color: transparent;
   width: 300px;
   height: 300px;
-  border: 1px solid #f1f1f1;
   margin: 10px;
 }
 
