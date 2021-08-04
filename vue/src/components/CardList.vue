@@ -1,5 +1,6 @@
 <template>
     <div class="cardbox" >
+        <NewCard @add-card="$emit('add-card', newCard)" />
         <div v-for="card in cards" :key="card.cardId">
             <Card :card="card"/>
         </div>
@@ -9,6 +10,7 @@
 
 <script>
 import Card from "../components/Card"
+import NewCard from "../components/NewCard"
 
 export default {
     name:'CardList',
@@ -16,7 +18,8 @@ export default {
         cards: Array
     },
     components: {
-        Card
+        Card,
+        NewCard
     }
 }
 </script>

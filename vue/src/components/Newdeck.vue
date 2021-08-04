@@ -1,6 +1,9 @@
 <template>
     <div>
-        <div class="deck" @click="$emit('add-new-deck')">+ Add New Deck</div>
+        <div class="deckbutton">
+        <i class="fas fa-plus-circle"></i>
+        <div class="deck" @click="$emit('add-new-deck')"> Add New Deck</div>
+        </div>
     </div>
 </template>
 
@@ -21,15 +24,39 @@ export default {
 
 <style scoped>
 
-.deck {
-    display: block;
-    font-size: 16pt;
-    padding: 10px
+.deckbutton {
+    display: flex;
+    background: #108cee;
+    margin: 0px auto 0px auto;
+    vertical-align: middle;
+    border-bottom: 1px solid white
 
 }
 
-.deck:hover{
-    background-color: #d8effd;
+
+.decklist {
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    min-height: 800px;
+    background-color: #108cee
+}
+
+.deck {
+    display: block;
+    font-size: 12pt;
+    padding: 10px;
+}
+
+
+.deckbutton:hover{
+    background-color:  #4FA7EB;
+}
+
+
+.fa-plus-circle{
+    padding: 10px;
+    color: #00E100;
 }
 
 </style>

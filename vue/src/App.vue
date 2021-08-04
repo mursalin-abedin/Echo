@@ -18,10 +18,11 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
 body {
   margin: 0px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Poppins, Arial, Helvetica, sans-serif;
 }
 
 .mainpagelayout {

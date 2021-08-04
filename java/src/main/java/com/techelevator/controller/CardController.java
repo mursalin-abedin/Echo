@@ -47,6 +47,4 @@ public class CardController {
     public void createCard(@RequestBody Card card) {
         cardDAO.createCard(card.getQuestion(), card.getAnswer(), card.getKeywords());
     }
-
-
 }

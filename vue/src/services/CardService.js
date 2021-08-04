@@ -10,6 +10,7 @@ export default {
     getCardByDeck(deckId) {
         return axios.get(`/decks/${deckId}/cards`)
     },
+<<<<<<< Updated upstream
     createCard() {
         return axios.post('/cards', {
             question: 'does vue work?',
@@ -18,4 +19,14 @@ export default {
         })
     }
 
+=======
+    createCard(card) {
+        return axios.post('/cards', {
+            question: card.question,
+            answer: card.answer,
+            keywords: card.keywords
+        })
+
+    }    
+>>>>>>> Stashed changes
 }

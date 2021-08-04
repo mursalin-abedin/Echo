@@ -2,14 +2,15 @@
     <div>
         <div class="mainmenubox">
             <div class="topmenubox">
-                <div class="echo icon">echo</div>
-                <div class="decks icon">decks</div>
-                <div class="search icon">search</div>
+                <div class="echo icon"><i class="fas fa-user-astronaut echoicon"></i></div>
+                <!-- <div class="decks icon"><i class="fas fa-layer-group echoicon"></i></div>
+                <div class="search icon">search</div> -->
             </div>
 
-            <div class="topmenubox">
+            <!-- We will re add below when we incorporate login -->
+            <!-- <div class="topmenubox">
                 <div class="user icon">user</div>
-            </div>
+            </div> --> 
         </div>
         
     </div>
@@ -44,10 +45,19 @@ export default {
     text-align: center;
     vertical-align: middle;
     color: white;
+    border-radius: 10px;
 }
 .icon:hover{
     background: #3BA1EF;
     border: 1px solid #03599B;
+}
+
+.echo{
+    font-size: 24pt;
+}
+
+.echoicon{
+    margin: 15px
 }
 
 .decks{
