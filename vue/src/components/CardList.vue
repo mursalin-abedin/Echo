@@ -1,6 +1,6 @@
 <template>
     <div class="cardbox" >
-        <NewCard v-if="deckSelected" @add-card="repeatCard" />
+        <NewCard @add-card="repeatCard" />
         <div v-for="card in cards" :key="card.cardId">
             <Card :card="card"/>
         </div>
@@ -17,7 +17,6 @@ export default {
     props: {
         cards: Array,
         ncard: Object,
-        deckSelected: Boolean
     },
     components: {
         Card,

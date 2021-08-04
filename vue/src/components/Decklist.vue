@@ -2,7 +2,7 @@
 
     <div class="decklist">
         <div class="echo"><div class="icon"><i class="fas fa-user-astronaut echoicon"></i></div><div class="echotext">Echo</div></div>
-        <NewDeck @add-new-deck="$emit('add-new-deck')" />
+        <NewDeck @show-new-deck-form="$emit('show-new-deck-form')" />
         <div v-for="deck in decks" :key="deck.deckId">
             <div class="deckbutton">
                 <div class="deckicon"><i class="fas fa-layer-group"></i></div>

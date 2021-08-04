@@ -1,10 +1,12 @@
 <template>
     <div class="mainappbody">
         <DeckList :decks="decks" 
-            @add-new-deck="addNewDeck" 
+            @show-new-deck-form="showAddNewDeckForm" 
             @get-deck="getDeck" 
         />
-        <CardList :cards="cards" @add-card="addNewCard" :deckSelected="currentDeckId>0" />
+        <AddDeckForm v-if="!currentDeckId"
+            @add-deck="addNewDeck" />
+        <CardList v-if="currentDeckId" :cards="cards" @add-card="addNewCard" />
     </div>
 </template>
 
@@ -13,12 +15,14 @@
     import CardList from '../components/CardList'
     import DeckService from '../services/DeckService'
     import CardService from '../services/CardService'
+    import AddDeckForm from '../components/AddDeckForm'
 
     export default {
         name: 'Home',
         components: {
             DeckList,
-            CardList
+            CardList,
+            AddDeckForm
         },
         data(){
             return {
@@ -34,8 +38,18 @@
                     this.cards = resp.data
                 })
             },
-            addNewDeck(){
+            showAddNewDeckForm(){
+                this.currentDeckId = ''
+            },
+            addNewDeck(ndeck){
                 console.log("Add New Deck!!")
+                DeckService.createNewDeck(ndeck).then(resp => {
+                    console.log(resp)
+                      DeckService.getAllDecks().then(resp => {
+                     this.decks = resp.data
+           });
+                })
+              
             },
             addNewCard(ncard){
                 ncard.deckId = this.currentDeckId
