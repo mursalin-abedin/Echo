@@ -19,5 +19,8 @@ export default {
             deckId: newCard.deckId
         })
 
-    }    
+    },
+    getCardById(cardId) {
+        return axios.get(`/cards/${cardId}`)
+    } 
 }

@@ -2,9 +2,19 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.CardDAO;
 import com.techelevator.model.Card;
+<<<<<<< HEAD
 import com.techelevator.model.Deck;
+=======
+
+>>>>>>> 566e2a3eb0f4b40ad80a43bc37da37719505eafc
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 //@PreAuthorize("permitAll")
@@ -21,9 +31,9 @@ public class CardController {
     public Card getCardById(@PathVariable int cardId) {
         return cardDAO.getCardById(cardId);
     }
-
     @RequestMapping(path = "/cards", method = RequestMethod.GET)
     public List<Card> getAllCards() {
+
         return cardDAO.getAllCards();
     }
 

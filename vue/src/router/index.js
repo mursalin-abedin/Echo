@@ -5,6 +5,7 @@ import Home from '../views/Home.vue'
 // import Logout from '../view/Logout.vue'
 // import Register from '../view/Register.vue'
 import store from '../store/index'
+import EditCardForm from '../components/EditCardForm'
 // import Card from '../components/Card.vue'
 // import CardList from '../components/CardList.vue'
 Vue.use(Router)
@@ -70,6 +71,14 @@ const router = new Router({
     //     requiresAuth: false
     //   }
     // },  
+    {
+      path: '/EditCard',
+      name: 'EditCard',
+      component: EditCardForm,
+      meta: {
+        //requiresAuth: true
+      }
+    },
   ]
 })
 

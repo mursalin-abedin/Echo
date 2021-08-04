@@ -60,7 +60,6 @@ export default {
   background-color: transparent;
   width: 300px;
   height: 300px;
-  border: 1px solid #f1f1f1;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
   margin: 10px;
 }
@@ -93,6 +92,7 @@ export default {
 .flip-card-front {
   background-color: #bbb;
   color: black;
+  border-radius: 10px;
 }
 
 /* Style the back side */
@@ -100,6 +100,7 @@ export default {
   background-color: dodgerblue;
   color: white;
   transform: rotateY(180deg);
+    border-radius: 10px;
 }
 
 .cardtext {

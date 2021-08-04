@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div class="deckbutton">
+        <div class="deckbutton" @click="$emit('show-new-deck-form')">
         <i class="fas fa-plus-circle"></i>
-        <div class="deck" @click="$emit('show-new-deck-form')"> Add New Deck</div>
+        <div class="deck" > Add New Deck</div>
         </div>
     </div>
 </template>

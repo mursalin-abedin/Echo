@@ -4,9 +4,10 @@
         <div class="echo"><div class="icon"><i class="fas fa-user-astronaut echoicon"></i></div><div class="echotext">Echo</div></div>
         <NewDeck @show-new-deck-form="$emit('show-new-deck-form')" />
         <div v-for="deck in decks" :key="deck.deckId">
-            <div class="deckbutton">
+            <div :class="(selectedDeck == deck.deckId) ? 'deckbuttonselected' : 'deckbutton'" 
+            @click="$emit('get-deck', deck.deckId); setSelectedDeck(deck.deckId)">
                 <div class="deckicon"><i class="fas fa-layer-group"></i></div>
-                <div class="deck" @click="$emit('get-deck', deck.deckId)">{{deck.deckName}}</div>
+                <div class="deck"  >{{deck.deckName}}</div>
             </div>
         </div>
     </div>
@@ -17,12 +18,22 @@
 import NewDeck from '../components/NewDeck'
 
 export default {
+    data(){
+        return{
+        selectedDeck: ''
+        }
+    },
     name:'DeckList',
     props: {
         decks: Array
     },
     components: {
         NewDeck
+    },
+    methods: {
+        setSelectedDeck(deckId){
+            this.selectedDeck = deckId
+        }
     }
 }
 </script>
@@ -41,6 +52,15 @@ export default {
 .deckbutton {
     display: flex;
     background: #108cee;
+    margin: 0px auto 0px auto;
+    vertical-align: middle;
+    border-bottom: 1px solid white
+
+}
+
+.deckbuttonselected {
+    display: flex;
+    background: lightgreen;
     margin: 0px auto 0px auto;
     vertical-align: middle;
     border-bottom: 1px solid white
