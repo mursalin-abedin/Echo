@@ -2,9 +2,10 @@
   <div>
       <div class="header" >
           <div class="icon"><i class="fas fa-user-astronaut echoicon"></i></div>
-          <div class="echotext"> Echo</div>
-        <div class="CardTitle">
-        <div class="StudySession">
+             <div class="echotext"> Echo</div>
+               <div class="CardTitle">
+                  <div class="StudySession">
+                    </div>
       </div>
     </div>
   </div>
