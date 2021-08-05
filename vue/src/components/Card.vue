@@ -1,9 +1,9 @@
 <template>
   <div class="card">
         <div class="flip-card" v-if="!edit">
-          <div class="flip-card-inner">
+          <div class="flip-card-inner" v-bind:class="existsInCurrentDeck ? 'existsindeck' : ''">
             <div class="flip-card-front">
-                <div class="cardtext cardtextfront">{{card.question}}</div>
+                <div class="cardtext cardtextfront ">{{card.question}}</div>
             </div>
             <div class="flip-card-back">
               <div class="edit" @click="showEditCardForm">
@@ -29,7 +29,8 @@ export default {
     name: 'card',
     data(){
         return{
-            edit: false
+            edit: false,
+            existsInCurrentDeck: false
         }
     },
     components: {
@@ -108,6 +109,13 @@ export default {
   color: white;
   transform: rotateY(180deg);
     border-radius: 10px;
+}
+
+.existsindeck{
+    border-style: solid;
+    border-width: medium;
+    border-color: lightgreen;
+    border-radius: 14px;
 }
 
 .cardtext {
