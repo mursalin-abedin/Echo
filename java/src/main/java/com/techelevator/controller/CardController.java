@@ -29,13 +29,18 @@ public class CardController {
     }
     @RequestMapping(path = "/cards", method = RequestMethod.GET)
     public List<Card> getAllCards() {
-
         return cardDAO.getAllCards();
     }
 
     @RequestMapping(path = "/cards/user_id={userId}", method = RequestMethod.GET)
     public List<Card> getAllCardsByUser(@PathVariable int userId) {
         return cardDAO.getAllCardsByUserId(userId);
+    }
+
+    @CrossOrigin
+    @RequestMapping(path = "/decks/{deckId}/cardsNotIncluded", method = RequestMethod.GET)
+    public List<Card> getAllCardsNotInADeck(@PathVariable int deckId) {
+        return cardDAO.getAllCardsNotInADeck(deckId);
     }
 
     @RequestMapping(path = "/decks/{deckId}/cards", method = RequestMethod.GET)

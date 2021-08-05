@@ -10,6 +10,9 @@ export default {
     getCardByDeck(deckId) {
         return axios.get(`/decks/${deckId}/cards`)
     },
+    getCardsNotInCurrentDeck(deckId) {
+        return axios.get(`/decks/${deckId}/cardsNotIncluded`)
+    },
     createCard(newCard) {
         console.log("newCard:" + newCard)
         return axios.post('/cards', {

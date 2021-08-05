@@ -48,6 +48,27 @@ public class JDBCCardDAO implements CardDAO {
     }
 
     @Override
+    public List<Card> getAllCardsNotInADeck(int deckId) {
+        List<Card> allCards = new ArrayList<>();
+        try {
+            String sql = "SELECT cards.card_id, cards.question, cards.answer, cards.keywords, cards.user_id," +
+                    " decks_cards.deck_id FROM cards RIGHT JOIN decks_cards ON decks_cards.card_id = cards.card_id" +
+                    " WHERE decks_cards.deck_id != ?";
+            SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, deckId);
+
+            while (rowSet.next()) {
+                Card newCard = mapRowToCard(rowSet);
+                newCard.setDeckId(rowSet.getInt("deck_id"));
+                allCards.add(newCard);
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return allCards;
+    }
+
+
+    @Override
     public List<Card> getAllCardsByUserId(int userId) {
         List<Card> allCardsByUser = new ArrayList<>();
         try {
