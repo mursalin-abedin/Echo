@@ -37,6 +37,7 @@ public class CardController {
         return cardDAO.getAllCardsByUserId(userId);
     }
 
+    @CrossOrigin
     @RequestMapping(path = "/decks/{deckId}/cardsNotIncluded", method = RequestMethod.GET)
     public List<Card> getAllCardsNotInADeck(@PathVariable int deckId) {
         return cardDAO.getAllCardsNotInADeck(deckId);

@@ -92,8 +92,9 @@ export default {
     },
     toggleShowAllCards() {
       if (this.showAllCardsSelected) {
-        CardService.getAllCards().then((resp) => {
-          this.cards = resp.data;
+        CardService.getCardsNotInCurrentDeck(this.currentDeckId).then((resp) => {
+
+          this.cards = this.cards.concat(resp.data);
         });
         console.log("This is firing!! Show All Cards!");
       } else {
@@ -105,11 +106,6 @@ export default {
     },
     toggleShowAllCardsSelected() {
       this.showAllCardsSelected = !this.showAllCardsSelected;
-    },
-  },
-  computed: {
-    allCardsFiltered() {
-      return 1;
     },
   },
   created() {

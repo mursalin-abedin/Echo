@@ -10,6 +10,9 @@
                   <i class="fas fa-pencil-alt"></i>
                   </div>
               <div class="cardtext cardtextback">{{card.answer}}</div>
+               
+                  <i class="fas fa-pencil-alt"></i>
+                  
             </div>
           </div> 
         </div>
@@ -110,7 +113,8 @@ export default {
   background-color: dodgerblue;
   color: white;
   transform: rotateY(180deg);
-    border-radius: 10px;
+  border-radius: 10px;
+  justify-content:space-between
 }
 
 .existsindeck{
@@ -135,6 +139,12 @@ export default {
 .edit:hover {
   background-color: #0e77c7;
   border-radius: 30%;
+}
+
+.fas fa-pencil-alt{
+  float: bottom;
+  padding: 5pt;
+
 }
 
 </style>
