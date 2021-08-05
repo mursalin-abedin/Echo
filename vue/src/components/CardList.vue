@@ -15,7 +15,10 @@
         <div class="cardbox" >
             <NewCard @add-card="repeatAddCard" />
             <div v-for="card in filteredList" :key="card.cardId">
-                <Card :card="card" @edit-card="repeatEditCard"/>
+                <Card 
+                v-bind="$props"
+                :card="card" 
+                @edit-card="repeatEditCard"/>
             </div>
         </div>
     </div>
@@ -37,6 +40,7 @@ export default {
     props: {
         cards: Array,
         ncard: Object,
+        currentDeckId: Number
     },
     components: {
         Card,

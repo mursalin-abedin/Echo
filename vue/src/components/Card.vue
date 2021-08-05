@@ -1,7 +1,7 @@
 <template>
   <div class="card">
         <div class="flip-card" v-if="!edit">
-          <div class="flip-card-inner" v-bind:class="existsInCurrentDeck ? 'existsindeck' : ''">
+          <div class="flip-card-inner" v-bind:class="(card.deckId == currentDeckId) ? 'existsindeck' : ''">
             <div class="flip-card-front">
                 <div class="cardtext cardtextfront ">{{card.question}}</div>
             </div>
@@ -37,7 +37,9 @@ export default {
       EditCardForm
     },
     props:{
-      card: Object
+      card: Object,
+      currentDeckId: Number
+
     },
     methods: {
       showEditCardForm(){

@@ -14,6 +14,7 @@
           class="cardlistbox"
           v-if="currentDeckId"
           :cards="cards"
+          :currentDeckId="this.currentDeckId"
           @add-card="addNewCard"
           @edit-card="editCard"
           @show-all-cards="
