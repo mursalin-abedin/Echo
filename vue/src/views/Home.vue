@@ -1,94 +1,123 @@
 <template>
-    <div class="mainappbody">
-        <DeckList :decks="decks" 
-            @show-new-deck-form="showAddNewDeckForm" 
-            @get-deck="getDeck" 
-        />
-          
-       <div class="rightside">
-         <div><Header/></div>
-       <div class=centerpage><AddDeckForm  v-if="!currentDeckId"
-            @add-deck="addNewDeck" />   
-        <CardList v-if="currentDeckId" :cards="cards" @add-card="addNewCard" />
-          </div>
-          </div> 
-    </div>
+  <div class="mainappbody">
+    <DeckList
+      :decks="decks"
+      @show-new-deck-form="showAddNewDeckForm"
+      @get-deck="getDeck"
+    />
 
+    <div class="rightside">
+      <Header />
+      <div class="centerpage">
+        <AddDeckForm v-if="!currentDeckId" @add-deck="addNewDeck" />
+        <CardList
+          class="cardlistbox"
+          v-if="currentDeckId"
+          :cards="cards"
+          @add-card="addNewCard"
+          @edit-card="editCard"
+          @show-all-cards="showAllCards"
+        />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-    import DeckList from '../components/DeckList'
-    import CardList from '../components/CardList'
-    import DeckService from '../services/DeckService'
-    import CardService from '../services/CardService'
-    import AddDeckForm from '../components/AddDeckForm'
-    import Header from '../components/Header'
+import DeckList from "../components/DeckList";
+import CardList from "../components/CardList";
+import DeckService from "../services/DeckService";
+import CardService from "../services/CardService";
+import AddDeckForm from "../components/AddDeckForm";
+import Header from "../components/Header";
 
-    export default {
-        name: 'Home',
-        components: {
-            DeckList,
-            CardList,
-            AddDeckForm,
-            Header,
-        },
-        data(){
-            return {
-                decks: [],
-                cards: [],
-                currentDeckId: '',
-            }
-        },
-        methods:{
-            getDeck(deckId){
-                this.currentDeckId = deckId
-                CardService.getCardByDeck(deckId).then(resp => {
-                    this.cards = resp.data
-                })
-            },
-            showAddNewDeckForm(){
-                this.currentDeckId = ''
-            },
-            addNewDeck(ndeck){
-                console.log("Add New Deck!!")
-                DeckService.createNewDeck(ndeck).then(resp => {
-                    console.log(resp)
-                      DeckService.getAllDecks().then(resp => {
-                     this.decks = resp.data
-           });
-                })
-              
-            },
-            addNewCard(ncard){
-                ncard.deckId = this.currentDeckId
-                console.log("NCARD:" + ncard)
-                CardService.createCard(ncard).then(resp => {
-                    console.log(resp)
-                    this.getDeck(this.currentDeckId)
-           });
-           
-            }
-        },
-        created(){
-           DeckService.getAllDecks().then(resp => {
-               this.decks = resp.data
-           });
-        }
+export default {
+  name: "Home",
+  components: {
+    DeckList,
+    CardList,
+    AddDeckForm,
+    Header,
+  },
+  data() {
+    return {
+      decks: [],
+      cards: [],
+      currentDeckId: "",
+    };
+  },
+  methods: {
+    getDeck(deckId) {
+      this.currentDeckId = deckId;
+      CardService.getCardByDeck(deckId).then((resp) => {
+        this.cards = resp.data;
+      });
+    },
+    showAddNewDeckForm() {
+      this.currentDeckId = "";
+    },
+    addNewDeck(ndeck) {
+      console.log("Add New Deck!!");
+      DeckService.createNewDeck(ndeck).then((resp) => {
+        console.log(resp);
+        DeckService.getAllDecks().then((resp) => {
+          this.decks = resp.data;
+        });
+      });
+    },
+    addNewCard(ncard) {
+      ncard.deckId = this.currentDeckId;
+      console.log("NCARD:" + ncard);
+      CardService.createCard(ncard).then((resp) => {
+        console.log(resp);
+        this.getDeck(this.currentDeckId);
+      });
+    },
+    editCard(ncard) {
+      console.log("NCARD:" + ncard);
+      CardService.editCard(ncard).then((resp) => {
+        console.log(resp);
+        this.getDeck(this.currentDeckId);
+      });
+    },
+     showAllCards() {
+      CardService.getAllCards().then((resp) => {
+        this.cards = resp.data;
+       
+      });
+    },
+  },
+  computed: {
+      allCardsFiltered(){
+          return 1;
+      }
 
-        
-    }
+  },
+  created() {
+    DeckService.getAllDecks().then((resp) => {
+      this.decks = resp.data;
+    });
+  },
+};
 </script>
 
 <style scoped>
 .mainappbody {
   display: flex;
+  width: 100%;
 }
-.rightside{
-    display:flex;
-    flex-direction:column;
+.rightside {
+    display:block;
+    width: 100%;
 }
-.centerpage{
-    width:100%;
-     margin-top:82px;
+.centerpage {
+  width: 100%;
+  margin-top: 82px;
 }
+
+.cardlistbox{
+    display: block;
+    width: 100%;
+}
+
 </style>

@@ -2,11 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.CardDAO;
 import com.techelevator.model.Card;
-<<<<<<< HEAD
-import com.techelevator.model.Deck;
-=======
 
->>>>>>> 566e2a3eb0f4b40ad80a43bc37da37719505eafc
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

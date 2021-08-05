@@ -1,8 +1,22 @@
 <template>
-    <div class="cardbox" >
-        <NewCard @add-card="repeatCard" />
-        <div v-for="card in cards" :key="card.cardId">
-            <Card :card="card"/>
+    <div>
+        <div class="upperbar">
+            <div class="searchbarbox">
+                <input class="inputtext" type="text" v-model="searchbox" placeholder="Enter a keyword to search for cards"> 
+                <div class="showallbox" @click="$emit('show-all-cards')">
+                    <div class="showalliconbox">
+                         <div class="mericaicon"><i class="fas fa-globe-americas"></i></div>
+                         <div  class="searchicon"><i class="fas fa-search"></i></div>   
+                    </div>
+                    <div class="showalltext">Show all</div>
+                </div>
+            </div>
+        </div>
+        <div class="cardbox" >
+            <NewCard @add-card="repeatAddCard" />
+            <div v-for="card in filteredList" :key="card.cardId">
+                <Card :card="card" @edit-card="repeatEditCard"/>
+            </div>
         </div>
     </div>
 </template>
@@ -14,6 +28,11 @@ import NewCard from "../components/NewCard"
 
 export default {
     name:'CardList',
+    data(){
+        return{
+            searchbox: ''
+        }
+    },
     props: {
         cards: Array,
         ncard: Object,
@@ -23,19 +42,100 @@ export default {
         NewCard
     },
     methods: {
-        repeatCard(ncard){
+        repeatAddCard(ncard){
             this.$emit('add-card', ncard)
+        },
+        repeatEditCard(ncard){
+            this.$emit('edit-card', ncard)
         }
+    },
+    computed: {
+        filteredList(){
+        console.log("this")
+        return this.cards.filter(card =>{
+            return card.keywords.toLowerCase().includes(this.searchbox.toLowerCase())
+        })
+    }
     }
 }
 </script>
 
 <style scoped>
 .cardbox{
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin: 0px 20px 0px 20px;
+  margin: 10px 0px 0px 10px;
+  width: 100%;
+}
+.upperbar{
+    display: block;
+    width: 100%;
+    height: 80px;
+    background-color: #dcdcdc;
+    margin: -2px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    border-bottom: 1px solid #ababab;
+}
+.searchbarbox {
+    display: flex;
+}
+.inputtext {
+  display: block;
+  line-height:24px;
+  background: #a0a0a0;
+  border-width: 0px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 20px 5px 20px;
+  font-size: 14pt;
+  color: #efefef;
+  margin: 16px 0px 0px 10px;
+  transition: all .5s ease;
+  min-width: 80%;
+
+}
+
+.inputtext:focus{
+    outline: 0;
+    background: #3BA1EF;
+}
+
+
+
+.showallbox {
+    display: block;
+    width: 42px;
+    height: 30px;
+    margin: 12px 0px 0px 20px;
+}
+
+.showalliconbox {
+    background: #bcbcbc;
+    border-radius: 50%;
+    border: 1px solid #999999;
+
+}
+
+.mericaicon{
+    font-size: 18pt;
+    padding: 2px 0px 0px 6px;
+    color: #efefef;
+
+}
+
+.searchicon {
+    font-size: 16pt;
+    padding: 0px 0px 0px 0px;
+    margin: -32px 0px 0px 15px;
+    color: #999999;
+}
+
+.showalltext{
+    margin: 0px 0px 0px -4px;
+    font-size: 10pt;
+    width: 60px;
+    color: #666666
 }
 
 

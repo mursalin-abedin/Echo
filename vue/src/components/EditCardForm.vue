@@ -1,7 +1,7 @@
 <template>
 <div class=card>
     <h2 class="title">
-    Add New Card
+    Edit Card <i class="fas fa-pencil-alt"></i>
     </h2>
      <form @submit="onSubmit" class="add-card">
     <div class="form-control">
@@ -36,18 +36,21 @@
 </template>
 
 <script>
-import CardService from '../services/CardService'
 export default {
   name: 'AddCard',
   data() {
     return {
         editcard: {
-            question: '',
-            answer: '',
-            keywords: '',
+            question: this.card.question,
+            answer: this.card.answer,
+            keywords: this.card.keywords,
+            cardId: this.card.cardId,
     }
     }
   },
+     props:{
+      card: Object
+    },
   methods: {
 
     onSubmit(e) {
@@ -60,19 +63,15 @@ export default {
         question: this.editcard.question,
         answer: this.editcard.answer,
         keywords: this.editcard.keywords,
+        cardId: this.editcard.cardId
       }
-      console.log("Created Ncard:" + ncard.question)
-        this.$emit('add-card', ncard)
+      console.log("Created Ncard:" + ncard.cardId)
+        this.$emit('edit-card', ncard)
         //this.question = ''
         //this.answer = ''
         //this.keywords = ''
     },
  },
-  created(){
-           CardService.getCardById(1).then(resp => {
-               this.editcard = resp.data
-           });
-        }
 }
 </script>
 
@@ -109,6 +108,9 @@ input{
  border-radius: 2px;
  justify-content: right;
  margin-top: 5px;
+}
+.fa-pencil-alt{
+    color:lightgreen;
 }
 
 </style>

@@ -36,7 +36,7 @@
         />
       </div>
 
-      <input type="submit" value="Save Task" class="btn btn-block" />
+      <input type="submit" value="Save Card" class="btn btn-block" />
     </form>
   </div>
 </template>

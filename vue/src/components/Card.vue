@@ -1,59 +1,66 @@
 <template>
   <div class="card">
-
-    <!-- <div @click="isToggle = !isToggle" :class="[isToggle ? 'colorFront' : 'colorBack']" class="animated flip"> -->
-      <!-- class for team to edit-->
-      <!-- <h1>{{card.question}}</h1> -->
-      <!-- <div class="card-content">
-        <p v-bind="card.id">{{ front }}</p>
-      </div>
-
-      <div class="card-content">
-        <p v-bind="card.id">{{ back }}</p>
-      </div> -->
-
-        <div class="flip-card">
+        <div class="flip-card" v-if="!edit">
           <div class="flip-card-inner">
             <div class="flip-card-front">
                 <div class="cardtext cardtextfront">{{card.question}}</div>
             </div>
             <div class="flip-card-back">
+              <div class="edit" @click="showEditCardForm">
+                  <i class="fas fa-pencil-alt"></i>
+                  </div>
               <div class="cardtext cardtextback">{{card.answer}}</div>
             </div>
           </div> 
         </div>
+
+        <div v-if="edit">
+          <EditCardForm :card="card" @edit-card="repeatEditCard"/>
+          </div>
 
     </div>
 
 </template>
 
 <script>
+
+import EditCardForm from './EditCardForm'
 export default {
     name: 'card',
     data(){
         return{
-            //isToggle:false,
+            edit: false
         }
+    },
+    components: {
+      EditCardForm
     },
     props:{
       card: Object
-    }
+    },
+    methods: {
+      showEditCardForm(){
+        this.edit = !this.edit
+      },
+      repeatEditCard(ncard){
+            this.$emit('edit-card', ncard)
+            this.showEditCardForm();
+        }
 
-};
+    }
+}
 </script>
 
 <style scoped>
 .card {
   display: block;
 }
-
-/* .colorFront {
-  background-color: white;
+.edit {
+    float: right;
+    padding: 5pt;
+    text-align: right;
+    color:lightgreen;
 }
-
-.colorFront {
-  background-color: black;
-} */
 
 .flip-card {
   display:block;
@@ -113,6 +120,11 @@ export default {
 
 .cardtextback {
   font-size: 14pt;
+}
+
+.edit:hover {
+  background-color: #0e77c7;
+  border-radius: 30%;
 }
 
 </style>

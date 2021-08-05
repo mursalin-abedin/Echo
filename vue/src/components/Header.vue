@@ -21,4 +21,5 @@ export default {
      margin-bottom: 20pt;
     background-color:#108CEE;
  }
+
 </style>

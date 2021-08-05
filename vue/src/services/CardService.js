@@ -22,5 +22,15 @@ export default {
     },
     getCardById(cardId) {
         return axios.get(`/cards/${cardId}`)
+    },
+    editCard(newCard){
+        return axios.put(`/cards/${newCard.cardId}`, {
+            question: newCard.question,
+            answer: newCard.answer,
+            keywords: newCard.keywords,
+            cardId: newCard.cardId
+        })
+        
     } 
+    
 }
