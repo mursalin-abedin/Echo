@@ -9,6 +9,8 @@ public interface CardDAO {
 
     List<Card> getAllCards();
 
+    List<Card> getAllCardsNotInADeck(int deckId);
+
     List<Card> getAllCardsByUserId(int userId);
 
     List<Card> getAllCardsByDeckId(int deckId);
@@ -22,5 +24,7 @@ public interface CardDAO {
     void removeCardFromDeck(int deckId, int cardId);
 
     void addCardToDeck(int deckId, int cardId);
+
+
 
 }
