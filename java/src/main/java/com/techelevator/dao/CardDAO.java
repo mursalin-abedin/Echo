@@ -19,7 +19,8 @@ public interface CardDAO {
 
     void updateCard(String question, String answer, String keywords, int cardId);
 
-
     void removeCardFromDeck(int deckId, int cardId);
+
+    void addCardToDeck(int deckId, int cardId);
 
 }

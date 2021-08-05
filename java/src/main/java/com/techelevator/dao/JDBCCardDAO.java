@@ -110,6 +110,12 @@ public class JDBCCardDAO implements CardDAO {
         jdbcTemplate.update(sql, deckId, cardId);
     }
 
+    @Override
+    public void addCardToDeck(int deckId, int cardId) {
+        String sql = "INSERT INTO decks_cards (deck_id, card_id) VALUES (?, ?)";
+        jdbcTemplate.update(sql, deckId, cardId);
+    }
+
     private Card mapRowToCard(SqlRowSet rowSet) {
         Card card = new Card();
         card.setCardId(rowSet.getInt("card_id"));

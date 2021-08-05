@@ -15,5 +15,6 @@ public interface DeckDAO {
 
     void updateDeck(String deckName, String deckDescription, int deckId);
 
+    void addCardToDeck(int deckId, int cardId);
 
 }

@@ -66,4 +66,10 @@ public class CardController {
         cardDAO.removeCardFromDeck(card.getDeckId(), card.getCardId());
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping( path = "/decks/{deckId}/cards", method = RequestMethod.POST)
+    public void addCardToDeck(@RequestBody Card card) {
+        cardDAO.addCardToDeck(card.getDeckId(), card.getCardId());
+    }
+
 }
