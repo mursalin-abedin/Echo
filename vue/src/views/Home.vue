@@ -16,7 +16,10 @@
           :cards="cards"
           @add-card="addNewCard"
           @edit-card="editCard"
-          @show-all-cards="showAllCards"
+          @show-all-cards="
+            toggleShowAllCardsSelected();
+            toggleShowAllCards();
+          "
         />
       </div>
     </div>
@@ -44,6 +47,7 @@ export default {
       decks: [],
       cards: [],
       currentDeckId: "",
+      showAllCardsSelected: false,
     };
   },
   methods: {
@@ -80,18 +84,32 @@ export default {
         this.getDeck(this.currentDeckId);
       });
     },
-     showAllCards() {
+    showAllCards() {
       CardService.getAllCards().then((resp) => {
         this.cards = resp.data;
-       
       });
+    },
+    toggleShowAllCards() {
+      if (this.showAllCardsSelected) {
+        CardService.getAllCards().then((resp) => {
+          this.cards = resp.data;
+        });
+        console.log("This is firing!! Show All Cards!");
+      } else {
+        CardService.getCardByDeck(this.currentDeckId).then((resp) => {
+          this.cards = resp.data;
+        });
+        console.log("ShowSelectedDeck!");
+      }
+    },
+    toggleShowAllCardsSelected() {
+      this.showAllCardsSelected = !this.showAllCardsSelected;
     },
   },
   computed: {
-      allCardsFiltered(){
-          return 1;
-      }
-
+    allCardsFiltered() {
+      return 1;
+    },
   },
   created() {
     DeckService.getAllDecks().then((resp) => {
@@ -107,17 +125,16 @@ export default {
   width: 100%;
 }
 .rightside {
-    display:block;
-    width: 100%;
+  display: block;
+  width: 100%;
 }
 .centerpage {
   width: 100%;
   margin-top: 82px;
 }
 
-.cardlistbox{
-    display: block;
-    width: 100%;
+.cardlistbox {
+  display: block;
+  width: 100%;
 }
-
 </style>

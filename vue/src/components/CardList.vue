@@ -3,10 +3,10 @@
         <div class="upperbar">
             <div class="searchbarbox">
                 <input class="inputtext" type="text" v-model="searchbox" placeholder="Enter a keyword to search for cards"> 
-                <div class="showallbox" @click="$emit('show-all-cards')">
-                    <div class="showalliconbox">
-                         <div class="mericaicon"><i class="fas fa-globe-americas"></i></div>
-                         <div  class="searchicon"><i class="fas fa-search"></i></div>   
+                <div class="showallbox" @click="$emit('show-all-cards'); toggleShowAllCardsSelected()">
+                    <div :class="showAllCardsSelected ? 'showalliconboxselected' : 'showalliconbox'" >
+                         <div :class="showAllCardsSelected ? 'mericaiconselected' : 'mericaicon'"><i class="fas fa-globe-americas"></i></div>
+                         <div  :class="showAllCardsSelected ? 'searchiconselected': 'searchicon'"><i class="fas fa-search"></i></div>   
                     </div>
                     <div class="showalltext">Show all</div>
                 </div>
@@ -30,7 +30,8 @@ export default {
     name:'CardList',
     data(){
         return{
-            searchbox: ''
+            searchbox: '',
+            showAllCardsSelected: false
         }
     },
     props: {
@@ -47,6 +48,9 @@ export default {
         },
         repeatEditCard(ncard){
             this.$emit('edit-card', ncard)
+        },
+        toggleShowAllCardsSelected(){
+            this.showAllCardsSelected = !this.showAllCardsSelected
         }
     },
     computed: {
@@ -108,10 +112,18 @@ export default {
     width: 42px;
     height: 30px;
     margin: 12px 0px 0px 20px;
+
 }
 
 .showalliconbox {
     background: #bcbcbc;
+    border-radius: 50%;
+    border: 1px solid #999999;
+
+}
+
+.showalliconboxselected {
+    background: lightgreen;
     border-radius: 50%;
     border: 1px solid #999999;
 
@@ -130,6 +142,21 @@ export default {
     margin: -32px 0px 0px 15px;
     color: #999999;
 }
+
+.searchiconselected {
+    font-size: 16pt;
+    padding: 0px 0px 0px 0px;
+    margin: -32px 0px 0px 15px;
+    color: #black;
+}
+
+.mericaiconselected {
+    font-size: 18pt;
+    padding: 2px 0px 0px 6px;
+    color: darkgrey;
+
+}
+
 
 .showalltext{
     margin: 0px 0px 0px -4px;
