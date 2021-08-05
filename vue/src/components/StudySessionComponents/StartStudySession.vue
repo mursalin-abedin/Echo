@@ -1,0 +1,68 @@
+<template>
+  <div>
+    <div class="header">
+        <div class="icon"><i class="fas fa-user-astronaut echoicon"></i></div>
+        <div class="echotext">Echo</div>
+      
+    </div>
+
+    <div class="pleasework">
+      <!-- <h2>SELECT A DECK</h2> -->
+    </div>
+    
+  </div>
+</template>
+
+<script>
+export default {};
+</script>
+
+<style scoped>
+
+.pleasework {
+    margin-top: 81px;
+    text-align: center;
+    justify-content: center;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 80px;
+  position: absolute;
+  margin-bottom: 20pt;
+  background-color: #108cee;
+}
+
+.icon {
+  color: #ff9201;
+  text-align: center;
+
+  display: block;
+
+  font-size: 20pt;
+
+  padding: 0px 0px 0px 0px;
+  margin: 15px 0px 0px 10px;
+
+  width: 50px;
+  height: 50px;
+
+  background-color: #e0e0e0;
+  border: 1px solid #666666;
+  border-radius: 50%;
+}
+
+.echo {
+  display: flex;
+  border-bottom: 1px solid white;
+}
+
+.echotext {
+  margin: 10px 0px 10px 10px;
+  font-size: 30pt;
+  font-weight: 700;
+  color: #e0e0e0;
+}
+</style>

@@ -8,6 +8,7 @@ import store from '../store/index'
 import EditCardForm from '../components/EditCardForm'
 // import Card from '../components/Card.vue'
 // import CardList from '../components/CardList.vue'
+import StartStudySession from '../components/StudySessionComponents/StartStudySession.vue'
 Vue.use(Router)
 
 /**
@@ -75,6 +76,14 @@ const router = new Router({
       path: '/EditCard',
       name: 'EditCard',
       component: EditCardForm,
+      meta: {
+        //requiresAuth: true
+      }
+    },
+    {
+      path: '/StudySession',
+      name: 'StartStudySession',
+      component: StartStudySession,
       meta: {
         //requiresAuth: true
       }
