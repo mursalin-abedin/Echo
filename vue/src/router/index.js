@@ -9,6 +9,7 @@ import EditCardForm from '../components/EditCardForm'
 // import Card from '../components/Card.vue'
 // import CardList from '../components/CardList.vue'
 import StartStudySession from '../components/StudySessionComponents/StartStudySession.vue'
+import DisplayStudyCards from '../components/StudySessionComponents/DisplayStudyCards.vue'
 Vue.use(Router)
 
 /**
@@ -86,6 +87,14 @@ const router = new Router({
       component: StartStudySession,
       meta: {
         //requiresAuth: true
+      }
+      },
+      {
+      path:'/DisplayStudyCards',
+      name:'DisplayStudyCards',
+      component: DisplayStudyCards,
+      meta: {
+        //requiresAuth: true  
       }
     },
   ]
