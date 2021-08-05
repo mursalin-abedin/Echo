@@ -73,8 +73,14 @@ public class JDBCCardDAO implements CardDAO {
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, deckId);
 
         while (rowSet.next()) {
-            Card card = mapRowToCard(rowSet);
-            allCardsByDeckId.add(card);
+            Card newCard = new Card();
+            newCard.setCardId(rowSet.getInt("card_id"));
+            newCard.setQuestion(rowSet.getString("question"));
+            newCard.setAnswer(rowSet.getString("answer"));
+            newCard.setKeywords(rowSet.getString("keywords"));
+            newCard.setUserId(rowSet.getInt("user_id"));
+            newCard.setDeckId(deckId);
+            allCardsByDeckId.add(newCard);
         }
 
         return allCardsByDeckId;
