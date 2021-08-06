@@ -9,7 +9,7 @@
         <h1>Select a deck to study from!</h1>
       </div>
       <div class="decks">
-        <div v-for="deck in decks" :key="deck.deckId">
+        <div v-for="deck in decks" :key="deck.deckId" v-on:click={}>
           <div class="deck">
             <div class="deckname">{{ deck.deckName }}</div>
           </div>
