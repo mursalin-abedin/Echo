@@ -11,6 +11,7 @@ import EditCardForm from '../components/EditCardForm'
 import StartStudySession from '../components/StudySessionComponents/StartStudySession.vue'
 import DisplayStudyCards from '../components/StudySessionComponents/DisplayStudyCards.vue'
 import StudySession from "../components/StudySessionComponents/StudySession.vue"
+import LandingPage from "../views/LandingPage"
 
 Vue.use(Router)
 
@@ -27,6 +28,14 @@ const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
+    {
+      path: '/',
+      name: 'LandingPage',
+      component: LandingPage,
+      meta: {
+       // requiresAuth: false,
+      }
+    },
     {
       path: '/home',
       name: 'Home',

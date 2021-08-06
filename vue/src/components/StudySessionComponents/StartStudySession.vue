@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="header">
-      <div class="icon"><i class="fas fa-user-astronaut echoicon"></i></div>
+      <div class="icon" @click="$router.push('/')"><i class="fas fa-user-astronaut echoicon"></i></div>
       <div class="echotext">Echo</div>
     </div>
     <div class="page">
@@ -10,8 +10,8 @@
       </div>
       <div class="decks">
         <div v-for="deck in decks" :key="deck.deckId" v-on:click={}>
-          <div class="deck">
-            <div class="deckname">{{ deck.deckName }}</div>
+          <div class="deck" @click="$router.push('studysession/deck/' + deck.deckId)">
+            <div class="deckname" >{{ deck.deckName }}</div>
           </div>
         </div>
       </div>

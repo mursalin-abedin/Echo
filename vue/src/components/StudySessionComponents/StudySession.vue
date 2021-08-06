@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="header">
-      <div class="icon"><i class="fas fa-user-astronaut echoicon"></i></div>
+      <div class="icon" @click="$router.push('/')"><i class="fas fa-user-astronaut echoicon"></i></div>
       <div class="echotext">Echo</div>
       <div class="CardTitle">
         <div class="studySession">
-            <div class="decktitle">Deck Title Goes Here</div>
-            <div class="studycard">fasdf </div>
+            <div class="decktitle" :v-for="decks.slice(this.deckId)">Studying For: ~Current Deck~ </div>
+            <div class="studycard">Current Study Card! </div>
         </div>
       </div>
     </div>
@@ -16,12 +16,14 @@
 
 <script>
 import CardService from "@/services/CardService.js";
+import DeckService from "@/services/DeckService.js"
 export default {
   name: "StudySession",
   data() {
     return {
       cards: Array,
-      deckId: this.$route.params.id
+      deckId: this.$route.params.id,
+      decks: Array,
     };
   },
   components:{
@@ -30,6 +32,9 @@ export default {
   created() {
     CardService.getCardByDeck(this.deckId).then((resp) => {
       this.cards = resp.data;
+    }),
+    DeckService.getAllDecks().then((resp) => {
+      this.decks = resp.data
     });
   },
 };
@@ -41,7 +46,6 @@ export default {
     display:flex;
     justify-content: center;
     flex-direction: column;
-    position: absolute;
 }
 .studycard{
     height: 400px;
