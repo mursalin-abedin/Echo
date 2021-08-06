@@ -10,7 +10,7 @@
           
         <h1>Welcome To Echo Cards</h1>
       </div>
-      <div>
+      <div class="buttons">
         <button @click="$router.push('home')">Edit Decks</button>
         <button @click="$router.push('StudySession')">Start Study Session</button>
       </div>
@@ -23,6 +23,9 @@ export default {};
 </script>
 
 <style>
+.buttons{
+    margin-left: 15px;
+}
 button {
   background-color: #6ad0f8; /* Green */
   border: none;
@@ -38,6 +41,7 @@ button {
 .page {
   position: absolute;
   margin-top: 200px;
+  margin-left: 40px;
   display: flex;
   justify-content: center;
 }
