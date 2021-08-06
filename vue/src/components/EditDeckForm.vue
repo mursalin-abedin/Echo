@@ -1,20 +1,19 @@
 <template>
 <div class=card>
-
   <h2 class="title">
-    Add New Deck
+    Edit Deck
     <i class="fas fa-plus" style="color: lightgreen"></i>
     </h2>
      <form @submit="onSubmit" class="add-deck">
     <div class="form-control">
       <label>Name:</label>
-      <input type="text" v-model="deckName" name="deckName" placeholder="Name your deck!" />
+      <input type="text" v-model="editdeck.deckName" name="deckName" placeholder="Name your deck!" />
     </div>
     <div class="form-control">
       <label>Description:</label>
       <input
         type="text"
-        v-model="deckDescription"
+        v-model="editdeck.deckDescription"
         name="deckDescription"
         placeholder="Describe your deck!"
       />
@@ -22,7 +21,6 @@
     <input type="submit" value="Add Deck" class="btn btn-block" />
   </form>
     </div>
-
 </template>
 
 
@@ -32,23 +30,28 @@ export default {
   name: 'AddCard',
   data() {
     return {
-      deckName: '',
-      deckDescription: '',
+        editdeck: {
+            deckName: "Hello!",
+            deckDescription: "Hi!"
+    }
     }
   },
+  // props: {
+  //   deck: Object
+  // },
   methods: {
     onSubmit(e) {
       e.preventDefault()
-      if (!this.deckName) {
+      if (!this.editdeck.deckName) {
         alert('Please fill the blanks')
         return
       }
       const ndeck = {
-        deckName: this.deckName,
-        deckDescription: this.deckDescription,
+        deckName: this.editDeck.deckName,
+        deckDescription: this.editDeck.deckDescription,
       }
-      console.log("Created Ndeck:" + ndeck.deckName)
-        this.$emit('add-deck', ndeck)
+      console.log("Edit Ndeck:" + ndeck.deckName)
+        this.$emit('submit-edit-deck', ndeck)
     },
   },
 }
@@ -67,6 +70,10 @@ export default {
   border-radius: 10px;
   font-family: Arial, Helvetica, sans-serif;
   margin: 180px 10px 10px 20px;
+}
+.spacer{
+  height: 81px;
+  display: block;
 }
 .title {
   font-size: 25px;

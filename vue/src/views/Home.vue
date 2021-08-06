@@ -4,15 +4,17 @@
       :decks="decks"
       @show-new-deck-form="showAddNewDeckForm"
       @get-deck="getDeck"
+      @show-edit-deck="showEditDeckForm"
     />
 
     <div class="rightside">
       <Header />
       <div class="centerpage">
+        <EditDeckForm v-if="showEditDeckFormSelected && currentDeckId" :deck="this.deck"/> 
         <AddDeckForm v-if="!currentDeckId" @add-deck="addNewDeck" />
         <CardList
           class="cardlistbox"
-          v-if="currentDeckId"
+          v-if="currentDeckId && !showEditDeckFormSelected"
           :cards="cards"
           :currentDeckId="this.currentDeckId"
           @add-card="addNewCard"
@@ -32,6 +34,7 @@ import CardList from "../components/CardList";
 import DeckService from "../services/DeckService";
 import CardService from "../services/CardService";
 import AddDeckForm from "../components/AddDeckForm";
+import EditDeckForm from "../components/EditDeckForm"
 import Header from "../components/Header";
 
 export default {
@@ -40,6 +43,7 @@ export default {
     DeckList,
     CardList,
     AddDeckForm,
+    EditDeckForm,
     Header,
   },
   data() {
@@ -48,6 +52,7 @@ export default {
       cards: [],
       currentDeckId: "",
       showAllCardsSelected: false,
+      showEditDeckFormSelected: false
     };
   },
   methods: {
@@ -56,6 +61,9 @@ export default {
     },
     showAddNewDeckForm() {
       this.currentDeckId = "";
+    },
+    showEditDeckForm(){
+        this.showEditDeckFormSelected = !this.showEditDeckFormSelected
     },
     addNewDeck(ndeck) {
       DeckService.createNewDeck(ndeck).then((resp) => {

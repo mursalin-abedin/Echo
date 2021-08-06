@@ -8,8 +8,10 @@
     <div>
       <div :class="selectedDeck == 0 ? 'deckbuttonselected' : 'deckbutton'"
       @click="$emit('show-new-deck-form'); clearSelectedDeck();">
+        <div class="deckbuttonleft">
         <div class="deckicon"><i class="fas fa-plus-circle"></i></div>
         <div class="deck">Add New Deck</div>
+        </div>
       </div>
     </div>
     <div v-for="deck in decks" :key="deck.deckId">
@@ -17,8 +19,13 @@
         :class="selectedDeck == deck.deckId ? 'deckbuttonselected' : 'deckbutton'"
         @click="$emit('get-deck', deck.deckId); setSelectedDeck(deck.deckId);"
       >
+        <div class="deckbuttonleft">
         <div class="deckicon"><i class="fas fa-layer-group"></i></div>
         <div class="deck">{{ deck.deckName }}</div>
+        </div>
+        <div class="editiconselected"
+        @click="showEditDeck(deck)">
+        <i class="fas fa-pencil-alt"></i></div>
       </div>
     </div>
   </div>
@@ -44,6 +51,9 @@ export default {
     clearSelectedDeck() {
       this.selectedDeck = 0;
     },
+    showEditDeck(deck){
+       this.$emit('show-edit-deck', deck)
+    }
   },
 };
 </script>
@@ -63,6 +73,11 @@ export default {
   margin: 0px auto 0px auto;
   vertical-align: middle;
   border-bottom: 1px solid white;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.deckbuttonleft{
+  display:flex;
 }
 
 .deckbuttonselected {
@@ -71,6 +86,8 @@ export default {
   margin: 0px auto 0px auto;
   vertical-align: middle;
   border-bottom: 1px solid white;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .deckicon {
@@ -125,5 +142,30 @@ export default {
   font-size: 30pt;
   font-weight: 700;
   color: #e0e0e0;
+}
+
+.editicon {
+  color:lightgreen;
+  text-align: center;
+  display: block;
+  width: 20px;
+  height: 20px;
+  padding: 10px 10px 0px 0px;
+}
+
+.editiconselected {
+  color:black;
+  text-align: center;
+  display: block;
+  width: 20px;
+  height: 20px;
+  padding: 10px 10px 0px 0px;
+}
+
+.fa-pencil-alt:hover {
+  background-color: #0e77c7;
+  border-radius: 50%;
+  text-align: center;
+  padding: 10px 10px 10px 10px
 }
 </style>
