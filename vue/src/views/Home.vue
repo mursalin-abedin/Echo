@@ -17,10 +17,9 @@
           :currentDeckId="this.currentDeckId"
           @add-card="addNewCard"
           @edit-card="editCard"
-          @show-all-cards="
-            toggleShowAllCardsSelected();
-            toggleShowAllCards();
-          "
+          @show-all-cards="toggleShowAllCardsSelected()"
+          @add-card-to-deck="addCardToDeck"
+          @remove-card-from-deck="removeCardFromDeck"
         />
       </div>
     </div>
@@ -54,15 +53,11 @@ export default {
   methods: {
     getDeck(deckId) {
       this.currentDeckId = deckId;
-      CardService.getCardByDeck(deckId).then((resp) => {
-        this.cards = resp.data;
-      });
     },
     showAddNewDeckForm() {
       this.currentDeckId = "";
     },
     addNewDeck(ndeck) {
-      console.log("Add New Deck!!");
       DeckService.createNewDeck(ndeck).then((resp) => {
         console.log(resp);
         DeckService.getAllDecks().then((resp) => {
@@ -72,45 +67,55 @@ export default {
     },
     addNewCard(ncard) {
       ncard.deckId = this.currentDeckId;
-      console.log("NCARD:" + ncard);
       CardService.createCard(ncard).then((resp) => {
         console.log(resp);
         this.getDeck(this.currentDeckId);
+        CardService.getAllCards().then((resp) => {
+          this.cards = resp.data;
+        });
       });
     },
     editCard(ncard) {
-      console.log("NCARD:" + ncard);
       CardService.editCard(ncard).then((resp) => {
         console.log(resp);
-        this.getDeck(this.currentDeckId);
-      });
-    },
-    showAllCards() {
-      CardService.getAllCards().then((resp) => {
-        this.cards = resp.data;
-      });
-    },
-    toggleShowAllCards() {
-      if (this.showAllCardsSelected) {
-        CardService.getCardsNotInCurrentDeck(this.currentDeckId).then((resp) => {
-
-          this.cards = this.cards.concat(resp.data);
-        });
-        console.log("This is firing!! Show All Cards!");
-      } else {
-        CardService.getCardByDeck(this.currentDeckId).then((resp) => {
+        CardService.getAllCards().then((resp) => {
           this.cards = resp.data;
         });
-        console.log("ShowSelectedDeck!");
-      }
+      });
     },
+    // showAllCards() {
+    //   CardService.getAllCards().then((resp) => {
+    //     this.cards = resp.data;
+    //   });
+    // },
     toggleShowAllCardsSelected() {
       this.showAllCardsSelected = !this.showAllCardsSelected;
+    },
+    addCardToDeck(card) {
+      console.log("created", card);
+      DeckService.addCardToDeck(card, this.currentDeckId).then((resp) => {
+        console.log(resp);
+        CardService.getAllCards().then((resp) => {
+          this.cards = resp.data;
+        });
+      });
+    },
+    removeCardFromDeck(card) {
+      console.log(card);
+      DeckService.removeCardFromDeck(card, this.currentDeckId).then((resp) => {
+        console.log(resp);
+        CardService.getAllCards().then((resp) => {
+          this.cards = resp.data;
+        });
+      });
     },
   },
   created() {
     DeckService.getAllDecks().then((resp) => {
       this.decks = resp.data;
+    });
+    CardService.getAllCards().then((resp) => {
+      this.cards = resp.data;
     });
   },
 };

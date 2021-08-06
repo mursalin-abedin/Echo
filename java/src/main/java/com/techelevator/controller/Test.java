@@ -12,8 +12,6 @@ public class Test {
     public static void main(String[] args) {
         QUERY = "BEGIN TRANSACTION;\n" +
                 "\n" +
-                "Drop Table if exists keywords_cards;"+
-                "Drop Table if exists keywords;"+
                 "DROP TABLE IF EXISTS users, cards, decks_cards, decks;\n" +
                 "DROP SEQUENCE IF EXISTS seq_user_id;\n" +
                 "\n" +
@@ -35,7 +33,7 @@ public class Test {
                 "        card_id serial PRIMARY KEY,\n" +
                 "        question varchar(1000) NOT NULL,\n" +
                 "        answer varchar(1000) NOT NULL,\n" +
-                "        keywords varchar(1000) NOT NULL,\n" +
+                "        keywords varchar(1000),\n" +
                 "        user_id int NOT NULL,\n" +
                 "        \n" +
                 "        CONSTRAINT fk_cards_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)\n" +
@@ -43,7 +41,11 @@ public class Test {
                 "\n" +
                 "CREATE TABLE decks(\n" +
                 "        deck_id serial PRIMARY KEY,\n" +
-                "        deck_name varchar(100)\n" +
+                "        deck_name varchar(100) NOT NULL,\n" +
+                "        deck_description varchar(1000),\n" +
+                "        user_id int NOT NULL,\n" +
+                "        \n" +
+                "        CONSTRAINT fk_decks_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)\n" +
                 ");\n" +
                 "\n" +
                 "CREATE TABLE decks_cards(\n" +
@@ -60,7 +62,7 @@ public class Test {
                 "\n" +
                 "INSERT INTO cards (question, answer, keywords, user_id) VALUES ('What year were the Boston Celtics founded?', 'Founded in 1946 as one of the league''s original eight teams, the Celtics are one of only two charter franchises (the other being the New York Knicks) still playing in their original city today.', 'Celtics', 1);\n" +
                 "INSERT INTO cards (question, answer, keywords, user_id) VALUES ('What is the name of the Boston Celtics'' mascot?', 'Lucky the Leprechaun', 'Celtics', 1);\n" +
-                "INSERT INTO cards (question, answer, keywords, user_id) VALUES ('Which Celtic was the first African-American player in the NBA?', 'On April 25, 1950, Chuck Cooper became the first African-American player drafted into the NBA when the Boston Celtics chose him with the 14th overall pick. When other teams suggested he shouldn''t be drafted because he was black, Celtics'' owner Walter A. Brown famously responded, \"I don''t give a damn if he''s striped, plaid or polka dot. Boston takes Charles Cooper of Duquesne.\"', 'Celtics', 1);\n" +
+                "INSERT INTO cards (question, answer, keywords, user_id) VALUES ('Which Celtic was the first African-American player in the NBA?', 'On April 25, 1950, Chuck Cooper became the first African-American player drafted into the NBA when the Boston Celtics chose him with the 14th overall pick.', 'Celtics', 1);\n" +
                 "INSERT INTO cards (question, answer, keywords, user_id) VALUES ('Who is the oldest Celtics player to score 40 points in a game?', 'On December 19, 2012, at the age of 35 years, 2 months, and 6 days, Paul Pierce scored 40 points in a 103-91 win over the Cleveland Cavaliers.', 'Celtics', 1);\n" +
                 "INSERT INTO cards (question, answer, keywords, user_id) VALUES ('Who did the Boston Celtics select with the 3rd pick in the 2017 NBA Draft?', 'Jayson Tatum', 'Celtics', 1);\n" +
                 "\n" +
@@ -90,10 +92,10 @@ public class Test {
                 "INSERT INTO cards (question, answer, keywords, user_id) VALUES (' What is a package?', ' A package is a collection of classes and interfaces that provides a high-level layer of access protection and name space management.', 'Coding', 1);\n" +
                 "INSERT INTO cards (question, answer, keywords, user_id) VALUES ('What is an abstract class? ', ' An abstract class is a class designed with implementation gaps for subclasses to fill in and is deliberately incomplete.', 'Coding', 1);\n" +
                 "\n" +
-                "INSERT INTO decks (deck_name) VALUES ('Celtics Facts');\n" +
-                "INSERT INTO decks (deck_name) VALUES ('Shrek Facts');\n" +
-                "INSERT INTO decks (deck_name) VALUES ('SpongeBob Quotes');\n" +
-                "INSERT INTO decks (deck_name) VALUES ('Coding Questions');\n" +
+                "INSERT INTO decks (deck_name, deck_description, user_id) VALUES ('Celtics Facts', 'Test your knowledge on the greatest NBA Franchise of all time!', 1);\n" +
+                "INSERT INTO decks (deck_name, deck_description, user_id) VALUES ('Shrek Facts', 'Test your knowledge on the greatest animated film of all time!', 1);\n" +
+                "INSERT INTO decks (deck_name, deck_description, user_id) VALUES ('SpongeBob Quotes', 'Who said what from the animated series Spongebob Squarepants', 1);\n" +
+                "INSERT INTO decks (deck_name, deck_description, user_id) VALUES ('Coding Questions', 'Test your knowledge on coding!', 1);\n" +
                 "\n" +
                 "INSERT INTO decks_cards (deck_id, card_id) VALUES (1, 1);\n" +
                 "INSERT INTO decks_cards (deck_id, card_id) VALUES (1, 2);\n" +

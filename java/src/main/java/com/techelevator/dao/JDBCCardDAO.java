@@ -26,7 +26,6 @@ public class JDBCCardDAO implements CardDAO {
         while (rowSet.next()) {
             card = mapRowToCard(rowSet);
         }
-
         return card;
     }
 
@@ -39,6 +38,8 @@ public class JDBCCardDAO implements CardDAO {
 
             while (rowSet.next()) {
                 Card newCard = mapRowToCard(rowSet);
+                ArrayList<Integer> deckIds = getAllDeckIds(newCard.getCardId());
+                newCard.setDeckIds(deckIds);
                 allCards.add(newCard);
             }
         } catch (Exception ex) {
@@ -141,6 +142,17 @@ public class JDBCCardDAO implements CardDAO {
     public void addCardToDeck(int deckId, int cardId) {
         String sql = "INSERT INTO decks_cards (deck_id, card_id) VALUES (?, ?)";
         jdbcTemplate.update(sql, deckId, cardId);
+    }
+
+    private ArrayList<Integer> getAllDeckIds(int cardId){
+        ArrayList<Integer> deckIds = new ArrayList<Integer>();
+        String sql = "select deck_id from decks_cards where card_id = ?";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, cardId);
+
+        while (rowSet.next()) {
+            deckIds.add(rowSet.getInt("deck_id"));
+        }
+        return deckIds;
     }
 
     private Card mapRowToCard(SqlRowSet rowSet) {

@@ -1,5 +1,7 @@
 package com.techelevator.model;
 
+import java.util.ArrayList;
+
 public class Card {
     private int cardId;
     private String question;
@@ -7,6 +9,7 @@ public class Card {
     private String keywords;
     private int userId;
     private int deckId;
+    private ArrayList<Integer> deckIds;
 
 
     public Card() {
@@ -67,5 +70,13 @@ public class Card {
 
     public void setDeckId(int deckId) {
         this.deckId = deckId;
+    }
+
+    public ArrayList<Integer> getDeckIds() {
+        return deckIds;
+    }
+
+    public void setDeckIds(ArrayList<Integer> deckIds) {
+        this.deckIds = deckIds;
     }
 }

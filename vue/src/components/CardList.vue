@@ -18,7 +18,9 @@
                 <Card 
                 v-bind="$props"
                 :card="card" 
-                @edit-card="repeatEditCard"/>
+                @edit-card="repeatEditCard"
+                @add-card-to-deck="repeatAddCardToDeck"
+                @remove-card-from-deck="repeatRemoveCardFromDeck"/>
             </div>
         </div>
     </div>
@@ -53,6 +55,14 @@ export default {
         repeatEditCard(ncard){
             this.$emit('edit-card', ncard)
         },
+        repeatAddCardToDeck(card){
+            this.$emit('add-card-to-deck', card)
+        },
+        repeatRemoveCardFromDeck(card){
+            console.log(card)
+            console.log("REmove Card from Deck!")
+            this.$emit('remove-card-from-deck', card)
+            },
         toggleShowAllCardsSelected(){
             this.showAllCardsSelected = !this.showAllCardsSelected
         }
@@ -60,8 +70,13 @@ export default {
     computed: {
         filteredList(){
         console.log("this")
+        if (this.showAllCardsSelected){
+            return this.cards.filter(card =>{
+            return (card.keywords.toLowerCase().includes(this.searchbox.toLowerCase()))
+        })
+        }
         return this.cards.filter(card =>{
-            return card.keywords.toLowerCase().includes(this.searchbox.toLowerCase())
+            return (card.keywords.toLowerCase().includes(this.searchbox.toLowerCase()) && card.deckIds.includes(this.currentDeckId))
         })
     }
     }

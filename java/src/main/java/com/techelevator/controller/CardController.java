@@ -1,13 +1,8 @@
 package com.techelevator.controller;
-
 import com.techelevator.dao.CardDAO;
 import com.techelevator.model.Card;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -67,14 +62,14 @@ public class CardController {
     }
 
     @RequestMapping(path = "/decks/{deckId}/cards", method = RequestMethod.DELETE)
-    public void removeCardFromDeck(@RequestBody Card card) {
-        cardDAO.removeCardFromDeck(card.getDeckId(), card.getCardId());
+    public void removeCardFromDeck(@PathVariable int deckId, @RequestBody Card card) {
+        cardDAO.removeCardFromDeck(deckId, card.getCardId());
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping( path = "/decks/{deckId}/cards", method = RequestMethod.POST)
-    public void addCardToDeck(@RequestBody Card card) {
-        cardDAO.addCardToDeck(card.getDeckId(), card.getCardId());
+    public void addCardToDeck(@PathVariable int deckId, @RequestBody Card card) {
+        cardDAO.addCardToDeck(deckId, card.getCardId());
     }
 
 }

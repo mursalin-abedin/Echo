@@ -32,8 +32,8 @@ export default {
             answer: newCard.answer,
             keywords: newCard.keywords,
             cardId: newCard.cardId
-        })
-        
-    } 
+        }) 
+    },
+   
     
 }
