@@ -28,5 +28,8 @@ export default {
             deckDescription: deck.deckDescription
         })
     },
+    getDeck(deckId){
+        return axios.get(`/decks/${deckId}`)
+    }
 
 }

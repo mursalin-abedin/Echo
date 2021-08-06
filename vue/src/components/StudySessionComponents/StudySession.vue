@@ -5,7 +5,8 @@
       <div class="echotext">Echo</div>
       <div class="CardTitle">
         <div class="studySession">
-            <div class="decktitle" :v-for="decks.slice(this.deckId)">Studying For: ~Current Deck~ </div>
+            <div class="decktitle">Studying For: {{deck.deckName}} </div>
+            <div class="deckdescription">{{deck.deckDescription}}</div>
             <div class="studycard">Current Study Card! </div>
         </div>
       </div>
@@ -23,24 +24,38 @@ export default {
     return {
       cards: Array,
       deckId: this.$route.params.id,
-      decks: Array,
+      deck: {
+        deckId: '',
+        deckName: '',
+        deckDescription: '',
+        userId: '',
+      },
     };
   },
   components:{
-      
+      // currentDeck(){
+      //   this.deck = this.decks[this.deckId - 1];
+      // }
   },
+  methods: {},
   created() {
     CardService.getCardByDeck(this.deckId).then((resp) => {
       this.cards = resp.data;
     }),
-    DeckService.getAllDecks().then((resp) => {
-      this.decks = resp.data
+      DeckService.getDeck(this.deckId).then((resp) => {
+      this.deck = resp.data;
     });
   },
 };
 </script>
 
 <style>
+.decktitle{
+  text-align: center;
+}
+.deckdescription{
+  text-align: center;
+}
 .studySession{
     margin-top: 120px;
     display:flex;
