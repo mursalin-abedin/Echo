@@ -10,7 +10,10 @@
     <div class="rightside">
       <Header />
       <div class="centerpage">
-        <EditDeckForm v-if="showEditDeckFormSelected && currentDeckId" :deck="this.deck"/> 
+        <EditDeckForm 
+        v-if="showEditDeckFormSelected && currentDeckId" 
+        :deck="currentDeck"
+        @submit-edit-deck="editDeck"/> 
         <AddDeckForm v-if="!currentDeckId" @add-deck="addNewDeck" />
         <CardList
           class="cardlistbox"
@@ -52,18 +55,28 @@ export default {
       cards: [],
       currentDeckId: "",
       showAllCardsSelected: false,
-      showEditDeckFormSelected: false
+      showEditDeckFormSelected: false,
+      currentDeck: ""
     };
   },
   methods: {
-    getDeck(deckId) {
-      this.currentDeckId = deckId;
+    getDeck(deck) {
+      this.currentDeckId = deck.deckId;
+      this.currentDeck = deck;
     },
     showAddNewDeckForm() {
       this.currentDeckId = "";
     },
     showEditDeckForm(){
         this.showEditDeckFormSelected = !this.showEditDeckFormSelected
+    },
+    editDeck(editdeck){
+        DeckService.modifyDeck(this.currentDeckId, editdeck).then((resp) => {
+         console.log(resp);
+        DeckService.getAllDecks().then((resp) => {
+          this.decks = resp.data;
+        });
+      });
     },
     addNewDeck(ndeck) {
       DeckService.createNewDeck(ndeck).then((resp) => {

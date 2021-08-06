@@ -4,7 +4,7 @@
     Edit Deck
     <i class="fas fa-plus" style="color: lightgreen"></i>
     </h2>
-     <form @submit="onSubmit" class="add-deck">
+     <form @submit="onSubmit" class="edit-deck">
     <div class="form-control">
       <label>Name:</label>
       <input type="text" v-model="editdeck.deckName" name="deckName" placeholder="Name your deck!" />
@@ -18,7 +18,7 @@
         placeholder="Describe your deck!"
       />
     </div>
-    <input type="submit" value="Add Deck" class="btn btn-block" />
+    <input type="submit" value="Edit Deck" class="btn btn-block" />
   </form>
     </div>
 </template>
@@ -27,18 +27,18 @@
 
 <script>
 export default {
-  name: 'AddCard',
+  name: 'EditDeck',
   data() {
     return {
         editdeck: {
-            deckName: "Hello!",
-            deckDescription: "Hi!"
+            deckName: this.deck.deckName,
+            deckDescription: this.deck.deckDescription
     }
     }
   },
-  // props: {
-  //   deck: Object
-  // },
+  props: {
+    deck: Object
+  },
   methods: {
     onSubmit(e) {
       e.preventDefault()
@@ -46,12 +46,7 @@ export default {
         alert('Please fill the blanks')
         return
       }
-      const ndeck = {
-        deckName: this.editDeck.deckName,
-        deckDescription: this.editDeck.deckDescription,
-      }
-      console.log("Edit Ndeck:" + ndeck.deckName)
-        this.$emit('submit-edit-deck', ndeck)
+        this.$emit('submit-edit-deck', this.editdeck)
     },
   },
 }

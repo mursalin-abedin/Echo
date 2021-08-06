@@ -17,7 +17,7 @@
     <div v-for="deck in decks" :key="deck.deckId">
       <div
         :class="selectedDeck == deck.deckId ? 'deckbuttonselected' : 'deckbutton'"
-        @click="$emit('get-deck', deck.deckId); setSelectedDeck(deck.deckId);"
+        @click="$emit('get-deck', deck); setSelectedDeck(deck.deckId);"
       >
         <div class="deckbuttonleft">
         <div class="deckicon"><i class="fas fa-layer-group"></i></div>

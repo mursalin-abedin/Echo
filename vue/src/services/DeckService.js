@@ -21,4 +21,12 @@ export default {
         return axios.post(`/decks/${deckId}/cards`, card)
     },
 
+    modifyDeck(deckId, deck) {
+        console.log(deckId, deck)
+        return axios.put(`/decks/${deckId}`, {
+            deckName: deck.deckName,
+            deckDescription: deck.deckDescription
+        })
+    },
+
 }
