@@ -4,17 +4,22 @@
           <div class="icon"><i class="fas fa-user-astronaut echoicon"></i></div>
              <div class="echotext"> Echo</div>
                <div class="CardTitle">
+                 <h5>Lets Practice</h5>
                   <div class="StudySession">
                     </div>
+                    <div class="page">
+                      <h1>Title goes Here</h1>
       </div>
     </div>
+  </div>
   </div>
 </template>
 
 <script>
+//import DeckService from "@/services/DeckService";
 export default {};
-</script>
 
+</script>
 <style scoped>
 .header {
   display: flex;
@@ -48,5 +53,12 @@ export default {};
   font-size: 30pt;
   font-weight: 700;
   color: #e0e0e0;
+}
+.cardTitle{
+margin: 10px 0px 10px 10px;
+  font-size: 30pt;
+  font-weight: 700;
+  color: #e0e0e0;
+  
 }
 </style>
