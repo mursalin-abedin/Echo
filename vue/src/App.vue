@@ -26,6 +26,5 @@ body {
 }
 
 .mainpagelayout {
-  display:flex;
 }
 </style>
