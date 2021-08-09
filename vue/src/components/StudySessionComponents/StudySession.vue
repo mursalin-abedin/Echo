@@ -17,6 +17,7 @@
     <mainapparea>
       <div class="decktitle">Studying For: {{ deck.deckName }}</div>
       <div class="deckdescription">{{ deck.deckDescription }}</div>
+      <div v-if="luisTest"> WE ARE DONE </div>
       <cardboxarea >
         <div class="bigcardoutside" @click="toggleShowAnswer" >
           <div class="flip-card" 
@@ -59,10 +60,10 @@
             <div clas="progresstext">Progress</div>
             <div class="progressbarbox">
               <div class="w3-border">
-                <div class="w3-grey" style="width: 50%"></div>
+                <div class="w3-grey" :style=progress></div>
               </div>
             </div>
-            <div class="precenttext">50%</div>
+            <div class="precenttext">{{progressPercent}}%</div>
           </div>
           <div class="right" @click="incrementCounter">
             Next Card <i class="fas fa-chevron-right rightadjust"></i>
@@ -91,6 +92,7 @@ export default {
       correctCounter: 0,
       incorrectCounter: 0,
       showAnswer: false,
+      luisTest: this.completed
     };
   },
   components: {
@@ -117,7 +119,17 @@ export default {
   computed: {
     currentCard() {
       return this.cards[this.counter]
+    },
+    progress(){
+      return "width: " + this.counter*100/this.cards.length + "%;"
+    },
+    progressPercent(){
+      return Math.round(this.counter*100/this.cards.length)
+    },
+    completed(){
+      return this.cards.length == this.counter
     }
+
   },
   created() {
     CardService.getCardByDeck(this.deckId).then((resp) => {
