@@ -22,23 +22,20 @@
 
       <cardboxarea >
         <div class="bigcardoutside" @click="toggleShowAnswer" >
-          <div class="flip-card">
+          <div class="flip-card" 
+           :class=" showAnswer ? 'rotate-card' : ''"
+           
+          >
             <div class="flip-card-inner">
               <div class="flip-card-front" >
                 <!-- front of card -->
-                <div class="bigcard">
+                <div class="bigcard" v-if="!showAnswer">
                   <div class="bigcardbody" >
                     {{currentCard.question}}
                   </div>
-                  <div class="bigcardbottombar">Click to see answer!</div>
+                  <div class="bigcardbottombar" >Click to see answer!</div>
                 </div>
-
-                <!-- end of card -->
-              </div>
-              <div class="flip-card-back">
-                <!-- back of card -->
-
-                <div class="bigcard">
+                <div class="bigcard" v-if="showAnswer">
                   <div class="bigcardbody">
                     {{currentCard.answer}}
                   </div>
@@ -47,6 +44,13 @@
                     <div class="questionright" @click="incrementCorrectCounter" >Correct</div>
                   </div>
                 </div>
+
+                <!-- end of card -->
+              </div>
+              <div class="flip-card-back" >
+                <!-- back of card -->
+
+                
 
                 <!-- back of card -->
               </div>
@@ -526,7 +530,7 @@ cardboxarea {
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
-.flip-card:hover .flip-card-inner {
+.flip-card:focus .flip-card-inner {
   transform: rotateY(180deg);
 }
 
@@ -552,5 +556,10 @@ cardboxarea {
   color: white;
   transform: rotateY(180deg);
 }
+
+/* .rotate-card{
+   transform: rotateY(180deg);
+
+} */
 
 </style>
