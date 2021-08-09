@@ -35,12 +35,12 @@
                   </div>
                   <div class="bigcardbottombar" >Click to see answer!</div>
                 </div>
-                <div class="bigcard" v-if="showAnswer">
+                <div class="bigcard" v-if="showAnswer" style=" transform: rotateY(180deg);">
                   <div class="bigcardbody">
                     {{currentCard.answer}}
                   </div>
                   <div class="bigcardbottombarback">
-                    <div class="questionwrong" @click="incrementIncorrectCounter" >Wrong</div>
+                    <div class="questionwrong" @click="incrementIncorrectCounter(); incrementCounter(); toggleShowAnswer()" >Wrong</div>
                     <div class="questionright" @click="incrementCorrectCounter" >Correct</div>
                   </div>
                 </div>
@@ -109,18 +109,18 @@ export default {
   },
   methods: {
      incrementCounter() {
-       this.counter++;
-       this.showAnswer = false;
+       this.counter++,
+       this.showAnswer = false
      },
      incrementCorrectCounter() {
-       this.correctCounter++;
-       this.counter++;
-       this.showAnswer = false;
+       this.correctCounter++
+       this.counter++,
+       this.showAnswer = false
      },
      incrementIncorrectCounter() {
-       this.incorrectCounter++;
-       this.counter++;
-       this.showAnswer = false;
+       this.incorrectCounter++,
+       this.counter++,
+       this.showAnswer = false
      },
      toggleShowAnswer() {
        this.showAnswer = !this.showAnswer
@@ -557,9 +557,9 @@ cardboxarea {
   transform: rotateY(180deg);
 }
 
-/* .rotate-card{
+.rotate-card{
    transform: rotateY(180deg);
 
-} */
+}
 
 </style>
