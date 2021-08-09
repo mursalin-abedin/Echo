@@ -17,10 +17,10 @@
     <mainapparea>
       <div class="decktitle">Studying For: {{ deck.deckName }}</div>
       <div class="deckdescription">{{ deck.deckDescription }}</div>
-      <div v-if="luisTest"> WE ARE DONE </div>
+      <div v-show="isCompleted"> WE ARE DONE </div>
       <cardboxarea >
         <div class="bigcardoutside" @click="toggleShowAnswer" >
-          <div class="flip-card" 
+          <div class="flip-card" v-if="!isCompleted"
            :class=" showAnswer ? 'rotate-card' : ''"
           >
             <div class="flip-card-inner">
@@ -38,7 +38,7 @@
                   </div>
                   <div class="bigcardbottombarback">
                     <div class="questionwrong" @click="incrementIncorrectCounter(); incrementCounter(); toggleShowAnswer()" >Wrong</div>
-                    <div class="questionright" @click="incrementCorrectCounter" >Correct</div>
+                    <div class="questionright" @click="incrementCorrectCounter(), incrementCounter(); toggleShowAnswer()" >Correct</div>
                   </div>
                 </div>
                 <!-- end of card -->
@@ -92,7 +92,7 @@ export default {
       correctCounter: 0,
       incorrectCounter: 0,
       showAnswer: false,
-      luisTest: this.completed
+      completedCounter: 0
     };
   },
   components: {
@@ -126,18 +126,17 @@ export default {
     progressPercent(){
       return Math.round(this.counter*100/this.cards.length)
     },
-    completed(){
-      return this.cards.length == this.counter
+    isCompleted() {
+      return this.cards.length <= this.counter
     }
-
   },
   created() {
     CardService.getCardByDeck(this.deckId).then((resp) => {
       this.cards = resp.data;
     }),
-      DeckService.getDeck(this.deckId).then((resp) => {
-        this.deck = resp.data;
-      });
+    DeckService.getDeck(this.deckId).then((resp) => {
+      this.deck = resp.data;
+    });
   },
 };
 </script>
