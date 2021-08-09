@@ -74,6 +74,8 @@ export default {
 
 <style scoped>
 
+@import url('https://fonts.googleapis.com/css2?family=Warnes&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -81,14 +83,14 @@ export default {
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #E7EAF7;
+  background-color: #F7F3E9;
 }
 
 
 /* css for the top nav var */
 
 nav {
-    background-color: #650acb;
+    background-color: #5EAAA8;
     color: #fff;
     display: flex;
     justify-content: space-between;
@@ -108,16 +110,17 @@ nav {
     width: 40px;
     height: 40px;
     font-size: 20pt;
-    background: #efefef;
+    background: #F7F3E9;
     border-radius: 50%;
-    border: 3px solid #666666;
+    border: 3px solid #A3D2CA;
 }
 
 .logowords {
     display: block;
-    font-family: Montserrat;
+    font-family: 'Warnes', cursive;
     font-size: 27pt;
     margin: 2px 0px 0px 5px;
+    color: #F7F3E9;
 }
 
 .loginbox {
@@ -128,7 +131,7 @@ nav {
 .logoadjust
 {
     margin: 0px 0px 0px 0px;
-    color: #8C4ED2;
+    color: #F05945;
     margin: 6px 0px 0px 8px;
 }
 
@@ -137,9 +140,9 @@ nav {
     width: 30px;
     height: 30px;
     font-size: 14pt;
-    background: #efefef;
+    background: #F7F3E9;
     border-radius: 50%;
-    border: 3px solid #666666;
+    border: 3px solid #A3D2CA;
     margin: 5px 0px 0px 3px;
 }
 
@@ -148,6 +151,7 @@ nav {
     font-family: Montserrat;
     font-size: 10pt;
     margin: 0px 0px 0px 0px;
+    text-align: center;
 }
 
 .loginbox {
@@ -158,7 +162,7 @@ nav {
 .loginadjust
 {
     margin: 0px 0px 0px 0px;
-    color: #8C4ED2;
+    color: #F05945;
     margin: 5px 0px 0px 6px;
 }
 
@@ -188,7 +192,7 @@ mainapparea {
 .banner {
     display: flex;
     flex-direction: row;
-    background: #ffffff;
+    background: #A3D2CA;
     width: 100%;
     margin: 20px;
     padding: 0px 20px 0px 20px;
@@ -201,14 +205,14 @@ mainapparea {
 .bannericonbox {
     display: block;
     font-size: 60pt;
-    color: #FFDD00;
+    color: #F05945;
     height: 120px;
     width: 120px;
     border-radius: 50%;
     text-align: center;
-    background-color: #f8f8f9;
+    background-color: #F7F3E9;
     margin: 10px auto 10px auto;
-/*    border: 3px solid #999999;*/
+   border: 3px solid #5EAAA8;
 }
 
 .bannertext {
@@ -219,7 +223,7 @@ mainapparea {
 .bannertextsmall {
     font-size: 14pt;
     padding: 0px 0px 10px 0px;
-    color: #999999;
+    color: #333333;
 }
 
 .bannertextbig {
@@ -231,20 +235,20 @@ mainapparea {
 .deck {
     display: flex;
     flex-direction: column;
-    background: #ffffff;
+    background: #A3D2CA;
     min-width: 18%;
     margin: 20px;
     padding: 0px 20px 0px 20px;
     border-radius: 5px;
     box-shadow: 2px 2px 2px #c0c0c0;
     justify-content: center;
-    border-bottom: 4px solid #ffffff;
+    border-bottom: 4px solid #5EAAA8;
     transition: all .4s ease;
 }
 
 .deck:hover {
-    border-bottom: 4px solid #4C0DCC;
-    background: #fafafa;
+    border-bottom: 4px solid #F05945;
+    /* background: #fafafa; */
 /*    box-shadow: 2px 2px 2px red;*/
 }
 
@@ -265,18 +269,18 @@ mainapparea {
 .deckpicbox {
     display: block;
     font-size: 60pt;
-    color: #FFDD00;
+    color: #F05945;
     height: 120px;
     width: 120px;
     border-radius: 50%;
     text-align: center;
-    background-color: #c0c0c0;
+    background-color: #F7F3E9;
     margin: 10px auto 10px auto;
-    border: 3px solid #999999;
+    border: 3px solid #5EAAA8;
 }
 
 .cardwords {
-    color: #666666;
+    color: #333333;
 }
 
 @media only screen and (max-width: 850px) {

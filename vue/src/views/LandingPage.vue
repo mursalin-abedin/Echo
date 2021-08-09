@@ -88,6 +88,8 @@ export default {
 
 <style>
 
+@import url('https://fonts.googleapis.com/css2?family=Warnes&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -95,14 +97,14 @@ export default {
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #E7EAF7;
+  background-color: #F7F3E9;
 }
 
 
 /* css for the top nav var */
 
 nav {
-    background-color: #650acb;
+    background-color: #5EAAA8;
     color: #fff;
     display: flex;
     justify-content: space-between;
@@ -122,16 +124,18 @@ nav {
     width: 40px;
     height: 40px;
     font-size: 20pt;
-    background: #efefef;
+    background: #F7F3E9;
     border-radius: 50%;
-    border: 3px solid #666666;
+    border: 3px solid #A3D2CA;
 }
 
 .logowords {
     display: block;
-    font-family: Montserrat;
+    font-family: 'Warnes', cursive;
     font-size: 27pt;
+    font-weight: bold;
     margin: 2px 0px 0px 5px;
+    color: #F7F3E9;
 }
 
 .loginbox {
@@ -142,7 +146,7 @@ nav {
 .logoadjust
 {
     margin: 0px 0px 0px 0px;
-    color: #8C4ED2;
+    color: #F05945;
     margin: 6px 0px 0px 8px;
 }
 
@@ -151,17 +155,18 @@ nav {
     width: 30px;
     height: 30px;
     font-size: 14pt;
-    background: #efefef;
+    background: #F7F3E9;
     border-radius: 50%;
-    border: 3px solid #666666;
-    margin: 5px 0px 0px 3px;
+    border: 3px solid #A3D2CA;
+    margin: 5px 0px 0px 25px;
 }
 
 .loginwords {
     display: block;
     font-family: Montserrat;
     font-size: 10pt;
-    margin: 0px 0px 0px 0px;
+    margin: 0px 2px 0px 25px;
+    
 }
 
 .loginbox {
@@ -172,7 +177,7 @@ nav {
 .loginadjust
 {
     margin: 0px 0px 0px 0px;
-    color: #8C4ED2;
+    color: #F05945;
     margin: 5px 0px 0px 6px;
 }
 
@@ -186,6 +191,7 @@ nav {
     justify-content: space-around;
     flex-wrap: wrap;
     padding: 20px;
+    background: #F7F3E9;
 }
 
 /* endmain app area*/
@@ -196,23 +202,20 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: #ffffff;
+    background: #A3D2CA;
     width: 40%;
     margin: 20px;
     padding: 0px 20px 0px 20px;
     border-radius: 5px;
     box-shadow: 2px 2px 2px #c0c0c0;
     justify-content: center;
-    border-bottom: 4px solid #ffffff;
+    border-bottom: 4px solid #5EAAA8;
     transition: all .4s ease;
 }
 
-card:hover {
-/*    box-shadow: 2px 2px 2px #439B00;*/
-    border-bottom: 4px solid #4C0DCC;
-    background: #f0f0f0;
-    cursor: pointer;
-}
+.card:hover {
+    border-bottom: 4px solid #F05945;
+    }
 
 
 .cardwordsbox{
@@ -231,14 +234,14 @@ card:hover {
 .cardpicbox {
     display: block;
     font-size: 60pt;
-    color: #FFDD00;
+    color: #F05945;
     height: 120px;
     width: 120px;
     border-radius: 50%;
     text-align: center;
-    background-color: #c0c0c0;
+    background-color: #F7F3E9;
     margin: 10px auto 10px auto;
-    border: 3px solid #999999;
+    border: 3px solid #5EAAA8;
     
 }
 
@@ -251,7 +254,7 @@ card:hover {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background: #FFFFFF;
+    background: #A3D2CA;
     width: 90%;
     margin: 20px;
     padding: 0px 20px 0px 20px;
@@ -259,6 +262,7 @@ card:hover {
 /*    border: 2px dotted #999999;*/
     box-shadow: 2px 2px 2px #c0c0c0;
     transition: all .4s ease;
+    border-bottom: 4px solid #5EAAA8;
 }
 
 .headerimage {
