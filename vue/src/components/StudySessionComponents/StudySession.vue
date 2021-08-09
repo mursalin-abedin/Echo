@@ -17,32 +17,37 @@
     <mainapparea>
       <div class="decktitle">Studying For: {{ deck.deckName }}</div>
       <div class="deckdescription">{{ deck.deckDescription }}</div>
-      <cardboxarea >
-        <div class="bigcardoutside" @click="toggleShowAnswer" >
-          <div class="flip-card" 
-           :class=" showAnswer ? 'rotate-card' : ''"
-          >
+      <cardboxarea>
+        <div class="bigcardoutside">
+          <div class="flip-card"  @click="toggleShowAnswer" :class="showAnswer ? 'rotate-card' : ''">
             <div class="flip-card-inner">
-              <div class="flip-card-front" >
+              <div class="flip-card-front">
                 <!-- front of card -->
                 <div class="bigcard" v-if="!showAnswer">
-                  <div class="bigcardbody" >
-                    {{currentCard.question}}
-                  </div>
-                  <div class="bigcardbottombar" >Click to see answer!</div>
-                </div>
-                <div class="bigcard" v-if="showAnswer" style=" transform: rotateY(180deg);">
                   <div class="bigcardbody">
-                    {{currentCard.answer}}
+                    {{ currentCard.question }}
+                  </div>
+                  <div class="bigcardbottombar">Click to see answer!</div>
+                </div>
+                <div class="bigcard" v-if="showAnswer">
+                  <div class="bigcardbody">
+                    {{ currentCard.answer }}
                   </div>
                   <div class="bigcardbottombarback">
-                    <div class="questionwrong" @click="incrementIncorrectCounter(); incrementCounter(); toggleShowAnswer()" >Wrong</div>
-                    <div class="questionright" @click="incrementCorrectCounter" >Correct</div>
+                    <div
+                      class="questionwrong"
+                      @click="incrementIncorrectCounter"
+                    >
+                      Wrong
+                    </div>
+                    <div class="questionright" @click="incrementCorrectCounter">
+                      Correct
+                    </div>
                   </div>
                 </div>
                 <!-- end of card -->
               </div>
-              <div class="flip-card-back" >
+              <div class="flip-card-back">
                 <!-- back of card -->
                 <!-- back of card -->
               </div>
@@ -93,31 +98,30 @@ export default {
       showAnswer: false,
     };
   },
-  components: {
-  },
+  components: {},
   methods: {
-     incrementCounter() {
-       this.counter++,
-       this.showAnswer = false
-     },
-     incrementCorrectCounter() {
-       this.correctCounter++
-       this.counter++,
-       this.showAnswer = false
-     },
-     incrementIncorrectCounter() {
-       this.incorrectCounter++,
-       this.counter++,
-       this.showAnswer = false
-     },
-     toggleShowAnswer() {
-       this.showAnswer = !this.showAnswer
-     }
+    incrementCounter() {
+      this.counter++;
+      this.showAnswer = false;
+    },
+    incrementCorrectCounter() {
+      this.correctCounter++;
+      this.counter++;
+      this.showAnswer = false;
+    },
+    incrementIncorrectCounter() {
+      this.incorrectCounter++;
+      this.counter++;
+      this.showAnswer = false;
+    },
+    toggleShowAnswer() {
+      this.showAnswer = !this.showAnswer;
+    },
   },
   computed: {
     currentCard() {
-      return this.cards[this.counter]
-    }
+      return this.cards[this.counter];
+    },
   },
   created() {
     CardService.getCardByDeck(this.deckId).then((resp) => {
@@ -146,11 +150,11 @@ export default {
 }
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #F7F3E9;
+  background-color: #f7f3e9;
 }
 /* css for the top nav var */
 nav {
-  background-color: #5EAAA8;
+  background-color: #5eaaa8;
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -168,9 +172,9 @@ nav {
   width: 40px;
   height: 40px;
   font-size: 20pt;
-  background: #F7F3E9;
+  background: #f7f3e9;
   border-radius: 50%;
-  border: 3px solid #A3D2CA;
+  border: 3px solid #a3d2ca;
 }
 .logowords {
   display: block;
@@ -184,7 +188,7 @@ nav {
 }
 .logoadjust {
   margin: 0px 0px 0px 0px;
-  color: #F05945;
+  color: #f05945;
   margin: 6px 0px 0px 8px;
 }
 .loginlogo {
@@ -192,9 +196,9 @@ nav {
   width: 30px;
   height: 30px;
   font-size: 14pt;
-  background: #F7F3E9;
+  background: #f7f3e9;
   border-radius: 50%;
-  border: 3px solid #A3D2CA;
+  border: 3px solid #a3d2ca;
   margin: 5px 0px 0px 3px;
 }
 .loginwords {
@@ -210,7 +214,7 @@ nav {
 }
 .loginadjust {
   margin: 0px 0px 0px 0px;
-  color: #F05945;
+  color: #f05945;
   margin: 5px 0px 0px 6px;
 }
 /* END css for the top nav var */
@@ -220,7 +224,7 @@ mainapparea {
   flex-direction: column;
   justify-content: center;
   padding: 0px auto 0px auto;
-  background: #F7F3E9;
+  background: #f7f3e9;
   /*    padding: 20px;*/
 }
 /* endmain app area*/
@@ -232,7 +236,7 @@ mainapparea {
   justify-content: space-between;
   width: 180px;
   min-height: 90vh;
-  background: #FFFFFF;
+  background: #ffffff;
   padding: 10px 0px 40px 0px;
 }
 .topbox {
@@ -243,10 +247,10 @@ mainapparea {
   display: flex;
   padding: 10px 0px 15px 20px;
   width: 90%;
-  border-bottom: 1px solid #E7EAF7;
+  border-bottom: 1px solid #e7eaf7;
 }
 .buttonlook1:hover {
-  color: #FFDD00;
+  color: #ffdd00;
 }
 .buttonlook2 {
   display: flex;
@@ -255,13 +259,13 @@ mainapparea {
   width: 70%;
   border: 1px solid #999999;
   border-radius: 5px;
-  background-color: #FFDD00;
+  background-color: #ffdd00;
   color: #333333;
   /*    border-bottom: 1px solid #E7EAF7; */
 }
 .progressbox {
   padding: 30% 0px 10px 36px;
-  background-color: #FFDD00;
+  background-color: #ffdd00;
 }
 .progresspercent {
   text-align: center;
@@ -277,11 +281,11 @@ mainapparea {
   margin: 0px 0px 0px 4px;
 }
 .navicon {
-  color: #4C0DCC;
+  color: #4c0dcc;
 }
 .navtext {
   padding: 0px 0px 0px 10px;
-  color: #4C0DCC;
+  color: #4c0dcc;
 }
 .navtext2 {
   padding: 0px 0px 0px 10px;
@@ -311,7 +315,7 @@ cardboxarea {
   flex-direction: column;
   justify-content: center;
   height: 50vh;
-  background: #A3D2CA;
+  background: #a3d2ca;
 }
 .bigcardbody {
   display: block;
@@ -321,14 +325,14 @@ cardboxarea {
   color: #333333;
 }
 .bigcardbottombar {
-  background-color: #F05945;
+  background-color: #f05945;
   width: 100%;
   padding: 10px 0px 10px 0px;
   text-align: center;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .bigcardbottombar:hover {
-  background-color: #F05945;
+  background-color: #f05945;
 }
 .bigcardbottombarback {
   display: flex;
@@ -338,13 +342,13 @@ cardboxarea {
   width: 50%;
   padding: 10px 0px 10px 0px;
   text-align: center;
-  background-color: #5EAAA8;
+  background-color: #5eaaa8;
 }
 .questionwrong {
   width: 50%;
   padding: 10px 0px 10px 0px;
   text-align: center;
-  background-color: #F05945;
+  background-color: #f05945;
 }
 .bottomnavbox {
   display: flex;
@@ -358,9 +362,9 @@ cardboxarea {
   flex-direction: row;
   flex-wrap: nowrap;
   width: 100%;
-  background: #5EAAA8;
+  background: #5eaaa8;
   padding: 10px 10px 10px 10px;
-  box-shadow: 5px 5px 5px #C0C0C0;
+  box-shadow: 5px 5px 5px #c0c0c0;
   justify-content: space-between;
   transition: all 0.4s ease;
 }
@@ -382,10 +386,10 @@ cardboxarea {
   display: block;
   width: 140px;
   height: 20px;
-  background-color: #F5F1FC;
+  background-color: #f5f1fc;
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 10px;
-  border-left: 60px solid #4C0DCC;
+  border-left: 60px solid #4c0dcc;
 }
 .progressbarbox {
   width: 30%;
@@ -407,7 +411,7 @@ cardboxarea {
   color: #333333;
 }
 .left:hover {
-  color: #F05945 !important;
+  color: #f05945 !important;
 }
 .right {
   display: block;
@@ -415,7 +419,7 @@ cardboxarea {
   color: #333333;
 }
 .right:hover {
-  color: #F05945 !important;
+  color: #f05945 !important;
 }
 .leftadjust {
   margin: 0px 10px 0px 0px;
@@ -425,12 +429,12 @@ cardboxarea {
 }
 .w3-border {
   /*    border:1px solid #ccc!important*/
-  background: #F5F1FC;
+  background: #f5f1fc;
 }
 .w3-grey {
   color: #000 !important;
   height: 10px;
-  background-color: #4C0DCC !important;
+  background-color: #4c0dcc !important;
 }
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-card {
@@ -439,9 +443,9 @@ cardboxarea {
   justify-content: space-between;
   max-width: 80%;
   height: 50vh;
-  background: #F7F3E9;
+  background: #f7f3e9;
   padding: 0px 0px 0px 0px;
-  box-shadow: 0px 0px 0px #C0C0C0;
+  box-shadow: 0px 0px 0px #c0c0c0;
   justify-content: center;
   transition: all 0.4s ease;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
@@ -479,7 +483,7 @@ cardboxarea {
   color: white;
   transform: rotateY(180deg);
 }
-.rotate-card{
+/* .rotate-card{
    transform: rotateY(180deg);
-}
+} */
 </style>
