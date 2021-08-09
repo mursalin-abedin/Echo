@@ -20,18 +20,17 @@
       <div class="decktitle">Studying For: {{ deck.deckName }}</div>
       <div class="deckdescription">{{ deck.deckDescription }}</div>
 
-      <cardboxarea>
-        <div class="bigcardoutside">
+      <cardboxarea >
+        <div class="bigcardoutside" @click="toggleShowAnswer" >
           <div class="flip-card">
             <div class="flip-card-inner">
-              <div class="flip-card-front">
+              <div class="flip-card-front" >
                 <!-- front of card -->
                 <div class="bigcard">
-                  <div class="bigcardbody">
-                    This is a allot of text that is a question about something,
-                    and the anser will be on the other side this card.
+                  <div class="bigcardbody" >
+                    {{currentCard.question}}
                   </div>
-                  <div class="bigcardbottombar">click here to see answer</div>
+                  <div class="bigcardbottombar">Click to see answer!</div>
                 </div>
 
                 <!-- end of card -->
@@ -41,11 +40,11 @@
 
                 <div class="bigcard">
                   <div class="bigcardbody">
-                    This is the answeer to all of lifes questions.
+                    {{currentCard.answer}}
                   </div>
                   <div class="bigcardbottombarback">
-                    <div class="questionwrong">Wrong Answer</div>
-                    <div class="questionright">Correct Answer</div>
+                    <div class="questionwrong" @click="incrementIncorrectCounter" >Wrong</div>
+                    <div class="questionright" @click="incrementCorrectCounter" >Correct</div>
                   </div>
                 </div>
 
@@ -71,7 +70,7 @@
             <div class="precenttext">50%</div>
           </div>
 
-          <div class="right">
+          <div class="right" @click="incrementCounter">
             Next Card <i class="fas fa-chevron-right rightadjust"></i>
           </div>
         </div>
@@ -95,14 +94,39 @@ export default {
         deckDescription: "",
         userId: "",
       },
+      counter: 0,
+      correctCounter: 0,
+      incorrectCounter: 0,
+      showAnswer: false,
     };
   },
   components: {
-    // currentDeck(){
-    //   this.deck = this.decks[this.deckId - 1];
-    // }
+   
   },
-  methods: {},
+  methods: {
+     incrementCounter() {
+       this.counter++;
+       this.showAnswer = false;
+     },
+     incrementCorrectCounter() {
+       this.correctCounter++;
+       this.counter++;
+       this.showAnswer = false;
+     },
+     incrementIncorrectCounter() {
+       this.incorrectCounter++;
+       this.counter++;
+       this.showAnswer = false;
+     },
+     toggleShowAnswer() {
+       this.showAnswer = !this.showAnswer
+     }
+  },
+  computed: {
+    currentCard() {
+      return this.cards[this.counter]
+    }
+  },
   created() {
     CardService.getCardByDeck(this.deckId).then((resp) => {
       this.cards = resp.data;
@@ -116,7 +140,7 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Warnes&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Faster+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Faster+One&display=swap");
 
 .decktitle {
   text-align: center;
@@ -167,7 +191,7 @@ nav {
 
 .logowords {
   display: block;
-  font-family: 'Warnes', cursive;
+  font-family: "Warnes", cursive;
   font-size: 27pt;
   margin: 2px 0px 0px 5px;
 }
@@ -432,7 +456,7 @@ cardboxarea {
 
 .precenttext {
   margin: 0px 0px 0px 20px;
-  font-family: 'Faster One', cursive;
+  font-family: "Faster One", cursive;
   color: #333333;
 }
 
@@ -528,4 +552,5 @@ cardboxarea {
   color: white;
   transform: rotateY(180deg);
 }
+
 </style>
