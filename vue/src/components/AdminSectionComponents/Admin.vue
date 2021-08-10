@@ -11,14 +11,12 @@
     @get-deck="getDeck"/>
 <DisplayAndEditCards 
     :cards="cards"
+    :currentDeckName = "currentDeck.deckName"
     :currentDeckId="currentDeckId"
     @add-new-card="addNewCard"
     @edit-card="editCard"
     @add-card-to-deck="addCardToDeck"
     @remove-card-from-deck="removeCardFromDeck"/>
-</div>
-<div class="drop-zone" v-if="currentDeckId > 0">
-  <div><i/>Current Selected Deck: <b>{{currentDeck.deckName}}</b>. Drag and Drop cards here to add to this deck.<i/></div>
 </div>
 </body>
 </template>
@@ -47,7 +45,7 @@ export default {
       currentDeckId: 0,
       showAllCardsSelected: false,
       showEditDeckFormSelected: false,
-      currentDeck: ""
+      currentDeck: ''
     };
   },
   methods: {
@@ -106,6 +104,9 @@ export default {
         });
       });
     },
+    onDrop(event){
+      console.log(event)
+    }
   },
   created() {
     DeckService.getAllDecks().then((resp) => {
@@ -139,14 +140,5 @@ body {
     padding: 20px;
 }
 
-.drop-zone {
-  display: flex;
-  height: 40px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: lightgreen;
-  justify-content: center;
-}
 
 </style>

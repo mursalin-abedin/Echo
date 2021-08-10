@@ -65,6 +65,7 @@
             : 'cardeditbox'
         "
         draggable="true"
+        @dragstart="onDrag(card)"
         v-for="card in filteredList"
         :key="card.cardId"
       >
@@ -136,10 +137,27 @@
         </div>
       </div>
     </div>
+
+
+
+<div class="drop-zone"
+   v-if="currentDeckId > 0"
+   @drop.prevent
+   @dragover.prevent
+   >
+
+   <div><i/>Current Selected Deck: <b>{{currentDeckName}}</b>. Drag and Drop cards here to add to this deck.<i/></div>
+  </div>
+
+  
+
   </div>
 </template>
 
 <script>
+
+
+
 export default {
   name: "DisplayAndEditCards",
   data() {
@@ -165,6 +183,7 @@ export default {
     cards: Array,
     ncard: Object,
     currentDeckId: Number,
+    currentDeckName: String
   },
   methods: {
     toggleShowAllCardsSelected() {
@@ -215,6 +234,10 @@ export default {
       this.$emit("edit-card", ncard);
       this.isShowEdit = false;
     },
+    onDrag(card){
+      console.log(card)
+
+    }
   },
   computed: {
     filteredList() {
@@ -436,5 +459,15 @@ input:focus {
 
 .fa-plus-circle {
   color: lightgreen;
+}
+
+.drop-zone {
+  display: flex;
+  height: 40px;
+  position: fixed;
+  bottom: 0;
+  width: 50%;
+  background-color: lightgreen;
+  justify-content: center;
 }
 </style>
