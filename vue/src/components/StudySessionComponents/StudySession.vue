@@ -30,10 +30,10 @@
                   <div class="bigcardbottombar" @click.stop="toggleShowAnswer">Click to see answer!</div>
                 </div>
                 <div class="bigcard" v-if="showAnswer" >
-                  <div class="bigcardbody" style=" transform: rotateY(180deg);">
+                  <div class="bigcardbody" >
                     {{currentCard.answer}}
                   </div>
-                  <div class="bigcardbottombarback" style=" transform: rotateY(180deg);">
+                  <div class="bigcardbottombarback" >
                     <div class="questionwrong" @click.stop="incorrectAnswer()">Wrong</div>
                     <div class="questionright" @click.stop="correctAnswer()">Correct</div>
                   </div>
@@ -483,9 +483,9 @@ cardboxarea {
   transform-style: preserve-3d;
 }
 /* Do an horizontal flip when you move the mouse over the flip box container */
-.flip-card:focus .flip-card-inner {
+/* .flip-card:focus .flip-card-inner {
   transform: rotateY(180deg);
-}
+} */
 /* Position the front and back side */
 .flip-card-front,
 .flip-card-back {
@@ -504,9 +504,9 @@ cardboxarea {
 .flip-card-back {
   background-color: dodgerblue;
   color: white;
-  transform: rotateY(180deg);
+  /* transform: rotateY(180deg); */
 }
 .rotate-card{
-   transform: rotateY(180deg);
+   /* transform: rotateY(180deg); */
 }
 </style>
