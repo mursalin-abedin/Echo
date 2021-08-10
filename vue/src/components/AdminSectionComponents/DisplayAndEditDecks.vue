@@ -10,7 +10,7 @@
         </div> -->
     <div class="deckarea">
 
-        <div :class="(deck.deckId == currentDeckId) ? 'selecteddeck': 'deck'" v-for="deck in decks"
+        <div :class="(deck.deckId == currentDeckId) ? 'selecteddeck': 'deck'" v-for="deck in sortedList"
              :key="deck.deckId"
              @click="$emit('get-deck', deck)" >
 
@@ -108,7 +108,13 @@ export default {
     decks: Array,
     currentDeckId: Number
   },
-  components: {},
+  computed: {
+    sortedList() {
+      return this.decks.slice().sort(function(a,b) {
+          return a.deckId - b.deckId;
+      });
+    },
+  },
   methods: {
     setSelectedDeck(deckId) {
       this.selectedDeck = deckId;
