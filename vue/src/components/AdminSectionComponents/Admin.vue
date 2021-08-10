@@ -17,6 +17,9 @@
     @add-card-to-deck="addCardToDeck"
     @remove-card-from-deck="removeCardFromDeck"/>
 </div>
+<div class="drop-zone" v-if="currentDeckId > 0">
+  <div><i/>Current Selected Deck: <b>{{currentDeck.deckName}}</b>. Drag and Drop cards here to add to this deck.<i/></div>
+</div>
 </body>
 </template>
 
@@ -134,6 +137,16 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     padding: 20px;
+}
+
+.drop-zone {
+  display: flex;
+  height: 40px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: lightgreen;
+  justify-content: center;
 }
 
 </style>

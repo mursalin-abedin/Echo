@@ -1,6 +1,9 @@
 <template>
-  <div class="editcardsarea">
+ <div class="editcardsarea">
+
     <div class="editcardsearchbox">
+      <div class="spacer"></div>
+
       <input
         class="cardsfilter"
         v-model="searchbox"
@@ -15,6 +18,7 @@
                 </div> -->
       </div>
     </div>
+    
     <div class="cards">
       <div class="cardeditbox">
         <div class="editcardheader">
@@ -153,7 +157,7 @@ export default {
         question: "",
         answer: "",
         keywords: "",
-        cardId: ""
+        cardId: "",
       },
     };
   },
@@ -166,12 +170,12 @@ export default {
     toggleShowAllCardsSelected() {
       this.showAllCardsSelected = !this.showAllCardsSelected;
     },
-    setEditCard(card){
-        this.editCard.question = card.question
-        this.editCard.answer = card.answer
-        this.editCard.keywords = card.keywords
-        this.editCard.cardId = card.cardId
-        this.currentCardId = card.cardId
+    setEditCard(card) {
+      this.editCard.question = card.question;
+      this.editCard.answer = card.answer;
+      this.editCard.keywords = card.keywords;
+      this.editCard.cardId = card.cardId;
+      this.currentCardId = card.cardId;
     },
     addOrRemoveCard(card) {
       console.log(card);
@@ -192,11 +196,11 @@ export default {
       };
       console.log("Created Ncard:" + ncard.question);
       this.$emit("add-new-card", ncard, this.currentDeckId);
-      this.nCard.question = '',
-      this.nCard.answer = '',
-      this.nCard.keywords = ''
+      (this.nCard.question = ""),
+        (this.nCard.answer = ""),
+        (this.nCard.keywords = "");
     },
-     onSubmitEdit(e) {
+    onSubmitEdit(e) {
       e.preventDefault();
       if (!this.editCard.question) {
         alert("Please fill the blanks");
@@ -206,7 +210,7 @@ export default {
         question: this.editCard.question,
         answer: this.editCard.answer,
         keywords: this.editCard.keywords,
-        cardId: this.editCard.cardId
+        cardId: this.editCard.cardId,
       };
       this.$emit("edit-card", ncard);
       this.isShowEdit = false;
@@ -216,18 +220,30 @@ export default {
     filteredList() {
       console.log("this");
       if (this.showAllCardsSelected) {
-        return this.cards.filter((card) => {
-          return card.keywords
-            .toLowerCase()
-            .includes(this.searchbox.toLowerCase());
-        });
+        return this.cards
+          .filter((card) => {
+            return card.keywords
+              .toLowerCase()
+              .includes(this.searchbox.toLowerCase());
+          })
+          .slice()
+          .sort(function (a, b) {
+            return a.cardId - b.cardId;
+          });
       }
-      return this.cards.filter((card) => {
-        return (
-          card.keywords.toLowerCase().includes(this.searchbox.toLowerCase()) &&
-          card.deckIds.includes(this.currentDeckId)
-        );
-      });
+      return this.cards
+        .filter((card) => {
+          return (
+            card.keywords
+              .toLowerCase()
+              .includes(this.searchbox.toLowerCase()) &&
+            card.deckIds.includes(this.currentDeckId)
+          );
+        })
+        .slice()
+        .sort(function (a, b) {
+          return a.cardId - b.cardId;
+        });
     },
   },
 };
