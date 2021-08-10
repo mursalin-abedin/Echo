@@ -192,6 +192,9 @@ export default {
       };
       console.log("Created Ncard:" + ncard.question);
       this.$emit("add-new-card", ncard, this.currentDeckId);
+      this.nCard.question = '',
+      this.nCard.answer = '',
+      this.nCard.keywords = ''
     },
      onSubmitEdit(e) {
       e.preventDefault();
