@@ -166,7 +166,7 @@ export default {
     font-size: 16pt;
     padding: 0px 0px 0px 0px;
     margin: -32px 0px 0px 15px;
-    color: #black;
+    color: black;
 }
 
 .mericaiconselected {

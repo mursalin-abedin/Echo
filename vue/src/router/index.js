@@ -12,6 +12,7 @@ import StartStudySession from '../components/StudySessionComponents/StartStudySe
 import DisplayStudyCards from '../components/StudySessionComponents/DisplayStudyCards.vue'
 import StudySession from "../components/StudySessionComponents/StudySession.vue"
 import LandingPage from "../views/LandingPage"
+import Admin from '../components/AdminSectionComponents/Admin'
 
 Vue.use(Router)
 
@@ -112,6 +113,14 @@ const router = new Router({
       path:'/DisplayStudyCards',
       name:'DisplayStudyCards',
       component: DisplayStudyCards,
+      meta: {
+        //requiresAuth: true  
+      }
+    },
+    {
+      path:'/Admin',
+      name:'Admin',
+      component: Admin,
       meta: {
         //requiresAuth: true  
       }

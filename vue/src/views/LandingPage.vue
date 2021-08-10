@@ -59,7 +59,7 @@
         </div>
     </div>
 
-    <div class="card" @click="$router.push('home')">
+    <div class="card" @click="$router.push('Admin')">
         <div class="smallericon cardpicbox">
             <i class="fas fa-chalkboard-teacher teacheradjust"></i>
         </div>
@@ -86,7 +86,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 
 @import url('https://fonts.googleapis.com/css2?family=Warnes&display=swap');
 
