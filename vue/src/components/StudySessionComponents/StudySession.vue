@@ -17,12 +17,9 @@
     <mainapparea>
       <div class="decktitle">Studying For: {{ deck.deckName }}</div>
       <div class="deckdescription">{{ deck.deckDescription }}</div>
-      <div v-show="isCompleted"> WE ARE DONE </div>
       <cardboxarea >
         <div class="bigcardoutside" @click="toggleShowAnswer" >
-          <div class="flip-card" v-if="!isCompleted"
-           :class=" showAnswer ? 'rotate-card' : ''"
-          >
+          <div class="flip-card" v-if="!isCompleted" :class=" showAnswer ? 'rotate-card' : ''">
             <div class="flip-card-inner">
               <div class="flip-card-front" >
                 <!-- front of card -->
@@ -36,25 +33,39 @@
                   <div class="bigcardbody">
                     {{currentCard.answer}}
                   </div>
-                  <div class="bigcardbottombarback">
+                  <div>
+                  <div class="bigcardbottombarback" >
                     <div class="questionwrong" @click="incrementIncorrectCounter(); incrementCounter(); toggleShowAnswer()" >Wrong</div>
-                    <div class="questionright" @click="incrementCorrectCounter(), incrementCounter(); toggleShowAnswer()" >Correct</div>
+                    <div class="questionright" @click="incrementCorrectCounter(); incrementCounter(); toggleShowAnswer()">Correct</div>
+                  </div>
+                  
                   </div>
                 </div>
                 <!-- end of card -->
               </div>
-              <div class="flip-card-back" >
-                <!-- back of card -->
-                <!-- back of card -->
+            </div>
+          </div>
+          <!-- test area -->
+          <div class="flip-card" v-if="isCompleted" >
+            <div class="flip-card-inner">
+              <div class="flip-card-front" >
+                <div class="bigcard" >
+                  <div class="bigcardbody" >
+                    <img src="https://c.tenor.com/8OJLtN_l5k8AAAAM/wowww-oww.gif" alt="WE DID IT">
+                    <div>You got {{correctCounter}}/{{cards.length}} right!</div>
+                  </div>
+                  <div class="bigcardbottombar" @click="$router.push('/StudySession')" >Click to go back</div>
+                </div>
               </div>
             </div>
           </div>
+          <!-- test area -->
         </div>
       </cardboxarea>
       <div class="bottomnavbox">
         <div class="bottomnav">
           <div class="left">
-            <i class="fas fa-chevron-left leftadjust"></i>Back
+            <i class="fas fa-chevron-left leftadjust" ></i>Back
           </div>
           <div class="precentarea">
             <div clas="progresstext">Progress</div>
@@ -65,7 +76,7 @@
             </div>
             <div class="precenttext">{{progressPercent}}%</div>
           </div>
-          <div class="right" @click="incrementCounter">
+          <div class="right" @click="incrementCounter()">
             Next Card <i class="fas fa-chevron-right rightadjust"></i>
           </div>
         </div>
@@ -103,13 +114,11 @@ export default {
        this.showAnswer = false
      },
      incrementCorrectCounter() {
-       this.correctCounter++
-       this.counter++,
+       this.correctCounter++,
        this.showAnswer = false
      },
      incrementIncorrectCounter() {
        this.incorrectCounter++,
-       this.counter++,
        this.showAnswer = false
      },
      toggleShowAnswer() {
@@ -441,7 +450,7 @@ cardboxarea {
 .w3-grey {
   color: #000 !important;
   height: 10px;
-  background-color: #4C0DCC !important;
+  background-color: #F05945 !important;
 }
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-card {
