@@ -28,9 +28,10 @@
             <i class="fas fa-star"></i>
         </div>
         <div class="bannertext">
-            
             <div class="bannertextsmall">Are you ready to get started on your learning adventure? </div>
             <div class="bannertextbig">Select a Study Deck and get started!</div>
+        </div>
+        <div class="bannericonboxspacer">
         </div>
     </div>
 
@@ -85,7 +86,6 @@ body {
   font-family: "Poppins", sans-serif;
   background-color: #F7F3E9;
 }
-
 
 /* css for the top nav var */
 
@@ -198,8 +198,6 @@ mainapparea {
     padding: 0px 20px 0px 20px;
     border-radius: 5px;
     box-shadow: 2px 2px 2px #c0c0c0;
-/*    justify-content: center;*/
-    
 }
 
 .bannericonbox {
@@ -212,12 +210,13 @@ mainapparea {
     text-align: center;
     background-color: #F7F3E9;
     margin: 10px auto 10px auto;
-   border: 3px solid #5EAAA8;
+    border: 3px solid #5EAAA8;
 }
 
 .bannertext {
     width: 80%;
     padding: 50px 0px 0px 0px;
+    text-align: center;
 }
 
 .bannertextsmall {
@@ -231,12 +230,16 @@ mainapparea {
     color: #333333;
 }
 
+.bannericonboxspacer {
+    width: 120px;
+}
 
 .deck {
     display: flex;
     flex-direction: column;
     background: #A3D2CA;
     min-width: 18%;
+    width: 100px;
     margin: 20px;
     padding: 0px 20px 0px 20px;
     border-radius: 5px;
@@ -251,7 +254,6 @@ mainapparea {
     /* background: #fafafa; */
 /*    box-shadow: 2px 2px 2px red;*/
 }
-
 
 .cardwordsbox{
     text-align: center;
