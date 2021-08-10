@@ -61,8 +61,8 @@
       </cardboxarea>
       <div class="bottomnavbox">
         <div class="bottomnav">
-          <div class="left">
-            <i class="fas fa-chevron-left leftadjust" ></i>Back
+          <div class="left" @click="setCounterToComplete()">
+            <i class="fas fa-times leftadjust"></i>End Session 
           </div>
           <div class="precentarea">
             <div clas="progresstext">Progress</div>
@@ -107,8 +107,12 @@ export default {
   },
   methods: {
      incrementCounter() {
-       this.counter++,
+       if (this.counter == this.cards.length) {
+         this.counter = this.cards.length
+       } else {
+         this.counter++,
        this.showAnswer = false
+       }
      },
      incrementCorrectCounter() {
        this.correctCounter++,
@@ -130,6 +134,9 @@ export default {
       this.incrementIncorrectCounter();
       this.incrementCounter();
       this.toggleShowAnswer()
+     },
+     setCounterToComplete() {
+       this.counter = this.cards.length
      }
   },
   computed: {
