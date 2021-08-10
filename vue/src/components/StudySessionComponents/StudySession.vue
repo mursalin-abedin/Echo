@@ -18,7 +18,7 @@
       <div class="decktitle">Studying For: {{ deck.deckName }}</div>
       <div class="deckdescription">{{ deck.deckDescription }}</div>
       <cardboxarea >
-        <div class="bigcardoutside" @click="toggleShowAnswer" >
+        <div class="bigcardoutside" >
           <div class="flip-card" v-if="!isCompleted" :class=" showAnswer ? 'rotate-card' : ''">
             <div class="flip-card-inner">
               <div class="flip-card-front" >
@@ -27,18 +27,15 @@
                   <div class="bigcardbody" >
                     {{currentCard.question}}
                   </div>
-                  <div class="bigcardbottombar" >Click to see answer!</div>
+                  <div class="bigcardbottombar" @click.stop="toggleShowAnswer">Click to see answer!</div>
                 </div>
-                <div class="bigcard" v-if="showAnswer" style=" transform: rotateY(180deg);">
-                  <div class="bigcardbody">
+                <div class="bigcard" v-if="showAnswer" >
+                  <div class="bigcardbody" style=" transform: rotateY(180deg);">
                     {{currentCard.answer}}
                   </div>
-                  <div>
-                  <div class="bigcardbottombarback" >
-                    <div class="questionwrong" @click="incrementIncorrectCounter(); incrementCounter(); toggleShowAnswer()" >Wrong</div>
-                    <div class="questionright" @click="incrementCorrectCounter(); incrementCounter(); toggleShowAnswer()">Correct</div>
-                  </div>
-                  
+                  <div class="bigcardbottombarback" style=" transform: rotateY(180deg);">
+                    <div class="questionwrong" @click.stop="incorrectAnswer()">Wrong</div>
+                    <div class="questionright" @click.stop="correctAnswer()">Correct</div>
                   </div>
                 </div>
                 <!-- end of card -->
@@ -123,6 +120,16 @@ export default {
      },
      toggleShowAnswer() {
        this.showAnswer = !this.showAnswer
+     },
+     correctAnswer() {
+       this.incrementCorrectCounter();
+       this.incrementCounter();
+       this.toggleShowAnswer()
+     },
+     incorrectAnswer() {
+      this.incrementIncorrectCounter();
+      this.incrementCounter();
+      this.toggleShowAnswer()
      }
   },
   computed: {
