@@ -13,6 +13,7 @@ import DisplayStudyCards from '../components/StudySessionComponents/DisplayStudy
 import StudySession from "../components/StudySessionComponents/StudySession.vue"
 import LandingPage from "../views/LandingPage"
 import Admin from '../components/AdminSectionComponents/Admin'
+import AboutUs from '../views/AboutUs.vue'
 
 Vue.use(Router)
 
@@ -121,6 +122,14 @@ const router = new Router({
       path:'/Admin',
       name:'Admin',
       component: Admin,
+      meta: {
+        //requiresAuth: true  
+      }
+    },
+    {
+      path:'/AboutUs',
+      name:'AboutUs',
+      component: AboutUs,
       meta: {
         //requiresAuth: true  
       }

@@ -11,12 +11,12 @@
         </div>
     </div>
     
-    <div class="loginbox">
+    <div class="loginbox" @click="$router.push('/AboutUs')">
         <div class="loginlogo">
             <i class="fas fa-sign-in-alt loginadjust"></i>
         </div>
         <div class="loginwords">
-            Log in
+            About Us
         </div>
     </div>
 </Nav>
@@ -26,7 +26,7 @@
 <div class="mainapparea">
     <div class="headerbox">
         <div class="headerboxleft">
-            <div><img class="headerimage" src=""></div>
+            <div><img class="headerimage" src="../img/Logo.png"></div>
         </div>
         
         <div class="headerboxright">
@@ -266,6 +266,7 @@ nav {
 }
 
 .headerimage {
+    padding-top: 30px;
     display:block;
     width: 300px;
 }

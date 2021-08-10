@@ -11,12 +11,12 @@
         </div>
     </div>
     
-    <div class="loginbox">
+    <div class="loginbox" @click="$router.push('/AboutUs')">
         <div class="loginlogo">
             <i class="fas fa-sign-in-alt loginadjust"></i>
         </div>
         <div class="loginwords">
-            Log in
+            About Us
         </div>
     </div>
 </Nav>

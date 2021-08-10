@@ -7,12 +7,14 @@
         </div>
         <div class="logowords">Echo</div>
       </div>
-      <div class="loginbox">
+      <div class="loginbox" @click="$router.push('/AboutUs')">
         <div class="loginlogo">
-          <i class="fas fa-sign-in-alt loginadjust"></i>
+            <i class="fas fa-sign-in-alt loginadjust"></i>
         </div>
-        <div class="loginwords">Log in</div>
-      </div>
+        <div class="loginwords">
+            About Us
+        </div>
+    </div>
     </Nav>
     <mainapparea>
       <div class="decktitle">Studying For: {{ deck.deckName }}</div>
