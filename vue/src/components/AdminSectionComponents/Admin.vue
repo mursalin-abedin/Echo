@@ -26,7 +26,6 @@ import TopNavBar from './TopNavBar'
 import AdminAddDeckBanner from './AdminAddDeckBanner'
 import DisplayAndEditDecks from './DisplayAndEditDecks'
 import DisplayAndEditCards from './DisplayAndEditCards'
-
 import DeckService from '@/services/DeckService.js'
 import CardService from '@/services/CardService.js'
 
@@ -128,9 +127,8 @@ export default {
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #E7EAF7;
+  background-color: #F7F3E9;
 }
-
 
 .mainapparea {
     display: flex;
@@ -138,7 +136,7 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     padding: 20px;
+    
 }
-
 
 </style>

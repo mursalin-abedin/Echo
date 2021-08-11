@@ -1,7 +1,7 @@
 <template>
 
 <Nav>
-    <div class="logobox" onclick="forwardTo('./index.html');">
+    <div class="logobox" @click="$router.push('/')">
         <div class="logo">
             <i class="fas fa-user-astronaut logoadjust"></i>
         </div>
@@ -10,12 +10,12 @@
         </div>
     </div>
     
-    <div class="loginbox">
+    <div class="loginbox" @click="$router.push('/AboutUs')">
         <div class="loginlogo">
             <i class="fas fa-sign-in-alt loginadjust"></i>
         </div>
         <div class="loginwords">
-            Log in
+            About Us
         </div>
     </div>
 </Nav>
@@ -29,6 +29,9 @@ export default {
 </script>
 
 <style scoped>
+
+@import url('https://fonts.googleapis.com/css2?family=Warnes&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -43,7 +46,7 @@ body {
 /* css for the top nav var */
 
 nav {
-    background-color: #650acb;
+    background-color: #5EAAA8;
     color: #fff;
     display: flex;
     justify-content: space-between;
@@ -63,14 +66,14 @@ nav {
     width: 40px;
     height: 40px;
     font-size: 20pt;
-    background: #efefef;
+    background: #F7F3E9;
     border-radius: 50%;
-    border: 3px solid #666666;
+    border: 3px solid #A3D2CA;
 }
 
 .logowords {
     display: block;
-    font-family: Montserrat;
+    font-family: 'Warnes', cursive;
     font-size: 27pt;
     margin: 2px 0px 0px 5px;
 }
@@ -83,7 +86,7 @@ nav {
 .logoadjust
 {
     margin: 0px 0px 0px 0px;
-    color: #8C4ED2;
+    color: #F05945;
     margin: 6px 0px 0px 8px;
 }
 
@@ -92,9 +95,9 @@ nav {
     width: 30px;
     height: 30px;
     font-size: 14pt;
-    background: #efefef;
+    background: #F7F3E9;
     border-radius: 50%;
-    border: 3px solid #666666;
+    border: 3px solid #A3D2CA;
     margin: 5px 0px 0px 3px;
 }
 
@@ -113,7 +116,7 @@ nav {
 .loginadjust
 {
     margin: 0px 0px 0px 0px;
-    color: #8C4ED2;
+    color: #F05945;
     margin: 5px 0px 0px 6px;
 }
 

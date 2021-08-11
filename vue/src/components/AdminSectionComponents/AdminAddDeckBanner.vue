@@ -31,26 +31,27 @@ export default {
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #E7EAF7;
+  background-color: #A3D2CA;
 }
 .selectdeckarea {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    background: #ffffff;
+    justify-content: center;
+    background: #A3D2CA;
     width: 80%;
     margin: 20px;
     padding: 0px 20px 0px 20px;
     border-radius: 5px;
 /*    border: 2px dotted #999999;*/
     box-shadow: 2px 2px 2px #c0c0c0;
-    border-bottom: 4px solid #ffffff;
+    border-bottom: 4px solid #5EAAA8;
     transition: all .4s ease;
     
 }
 .selectdeckbannertext {
     margin: 20px;
-    font-size: 20pt
+    font-size: 20pt;
+    color: #333333;
 }
 
 .adddeckbox {

@@ -1,10 +1,6 @@
 <template>
  <div class="editcardsarea">
 
-
-
-
-
    <div class="segmenttitle">Viewing cards in: {{currentDeckName}}</div>
 
 <!--Show Cards In Current Deck-->
@@ -51,11 +47,6 @@
           </div>
         </form>
       </div>
-
-
-
-
-
 
       <div
         :class="
@@ -139,15 +130,6 @@
 
     </div>
 
-
-
-
-
-
-
-
-
-
 <!-- Search Bar and Search All Cards -->
 
  <div class="segmenttitle" >Search Cards To Add To {{currentDeckName}}</div>
@@ -161,7 +143,7 @@
       />
       <div class="cardiconbox">
         <div class="showallcards" @click="toggleShowAllCardsSelected()">
-          <i class="fas fa-globe" :style="showAllCardsSelected ? 'color: lightgreen;' : '' "></i>
+          <i class="fas fa-globe" :style="showAllCardsSelected ? 'color: #5EAAA8;' : '' "></i>
         </div>
         <!-- <div class="collapsecards">
                     <i class="fas fa-chevron-circle-up"></i>
@@ -260,23 +242,11 @@
    <div><i/>Current Selected Deck: <b>{{currentDeckName}}</b>. Drag and Drop cards here to add to this deck.<i/></div>
    </div>
 
-  
-  
 
-
-
-
-
-
-
-
-
-  </div>
+</div>
 </template>
 
 <script>
-
-
 
 export default {
   name: "DisplayAndEditCards",
@@ -430,14 +400,15 @@ export default {
 </script>
 
 <style scoped>
+
 .cards {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  background: #ffffff;
+  background: #A3D2CA;
   width: 100%;
-  border-bottom-color: lightslategray;
+  border-bottom-color: F05945;
   border-bottom-width: 2px;
   border-bottom-style: solid;
 }
@@ -445,14 +416,14 @@ export default {
 .editcardsarea {
   display: flex;
   flex-direction: column;
-  background: #ffffff;
+  background: #A3D2CA;
   width: 80%;
   margin: 20px;
   padding: 0px 20px 0px 20px;
   border-radius: 5px;
   box-shadow: 2px 2px 2px #c0c0c0;
   justify-content: center;
-  border-bottom: 4px solid #ffffff;
+  border-bottom: 4px solid #5EAAA8;
   transition: all 0.4s ease;
 }
 
@@ -471,11 +442,11 @@ export default {
   padding: 10px;
   min-height: 100px;
   margin: 10px;
-  background: #fefefe;
+  background: #F7F3E9;
   border: 1px solid #eeeeee;
   border-radius: 5px;
   box-shadow: 2px 2px 2px #c0c0c0;
-  border-bottom: 4px solid #eeeeee;
+  border-bottom: 4px solid #5EAAA8;
   transition: all 0.4s ease;
 }
 
@@ -484,13 +455,13 @@ export default {
   padding: 10px;
   min-height: 100px;
   margin: 10px;
-  background: #fefefe;
+  background: #F7F3E9;
   border: 1px solid #eeeeee;
   border-radius: 5px;
   box-shadow: 2px 2px 2px #c0c0c0;
-  border-bottom: 4px solid #eeeeee;
+  border-bottom: 4px solid #5EAAA8;
   transition: all 0.4s ease;
-  border: 4px solid lightgreen;
+  border: 4px solid #F05945;
 }
 
 .edittoolbar {
@@ -541,7 +512,7 @@ textarea {
 textarea,
 input:focus {
   outline: none;
-  border-bottom: 2px solid #7b50d3;
+  border-bottom: 2px solid #F05945;
   transition: all 0.4s ease;
 }
 
@@ -555,7 +526,7 @@ input:focus {
   color: #666666;
   transition: all 0.4s ease;
   width: 93%;
-  border-bottom: 2px solid #7b50d3;
+  border-bottom: 2px solid #F05945;
   margin: 0px 0px 0px 0px;
 }
 
@@ -586,20 +557,21 @@ input:focus {
   padding: 5px;
   font-size: 12pt;
 }
+
 .showallcards {
   width: 10px;
   padding: 10px;
-  color: #2c0777;
+  color: #F05945;
 }
 
 .showallcards:hover {
-  color: #7b50d3;
+  color: #F05945;
 }
 
 .collapsecards {
   width: 10px;
   padding: 10px;
-  color: #2c0777;
+  color: #F05945;
 }
 
 .cardiconbox {
@@ -609,7 +581,7 @@ input:focus {
 .deletecard {
   width: 10px;
   padding: 0px 10px 0px 10px;
-  color: #9d002d;
+  color: #F05945;
 }
 
 .cardskeywordsbox {
@@ -618,7 +590,15 @@ input:focus {
 }
 
 .fa-plus-circle {
-  color: lightgreen;
+  color: #F05945;
+}
+
+.fa-edit {
+  color: #5EAAA8;
+}
+
+.fa-check {
+  color: #5EAAA8;
 }
 
 .drop-zone {
@@ -627,7 +607,7 @@ input:focus {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: lightgreen;
+  background-color: #F05945;
   justify-content: center;
   left: 0;
   right: 0;
