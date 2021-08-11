@@ -26,13 +26,13 @@
               <div class="flip-card-front" >
                 <!-- front of card -->
                 <div class="bigcard" v-if="!showAnswer">
-                  <div class="bigcardbody">
+                  <div class="bigcardbody" @click.stop="toggleShowAnswer">
                     {{currentCard.question}}
                   </div>
                   <div class="bigcardbottombar" @click.stop="toggleShowAnswer" >Click to see answer!</div>
                 </div>
                 <div class="bigcard" v-if="showAnswer">
-                  <div class="bigcardbody" >
+                  <div class="bigcardbody" @click.stop="toggleShowAnswer">
                     <div style="transform: rotateY(180deg);">
                     {{currentCard.answer}}
                     </div>
@@ -94,6 +94,7 @@
 import CardService from "@/services/CardService.js";
 import DeckService from "@/services/DeckService.js";
 
+
 export default {
   name: "StudySession",
   data() {
@@ -138,7 +139,7 @@ export default {
      correctAnswer() {
        this.incrementCorrectCounter();
        this.incrementCounter();
-       this.toggleShowAnswer()
+       this.toggleShowAnswer();
      },
      incorrectAnswer() {
       this.incrementIncorrectCounter();
@@ -372,7 +373,7 @@ cardboxarea {
   color: #FFFFFF;
 }
 .bigcardbottombar:hover {
-  background-color: #F05945;
+  background-color: #f36654;
 }
 .bigcardbottombarback {
   display: flex;
@@ -389,6 +390,12 @@ cardboxarea {
   padding: 10px 0px 10px 0px;
   text-align: center;
   background-color: #F05945;
+}
+.questionright:hover{
+  background-color: #85bebd;
+}
+.questionwrong:hover{
+  background-color:#f36654; 
 }
 .bottomnavbox {
   display: flex;
