@@ -20,24 +20,31 @@
       <div class="decktitle">Studying For: {{ deck.deckName }}</div>
       <div class="deckdescription">{{ deck.deckDescription }}</div>
       <cardboxarea >
-        <div class="bigcardoutside" >
+        <div class="bigcardoutside"  >
           <div class="flip-card" v-if="!isCompleted" :class=" showAnswer ? 'rotate-card' : ''">
             <div class="flip-card-inner">
               <div class="flip-card-front" >
                 <!-- front of card -->
                 <div class="bigcard" v-if="!showAnswer">
-                  <div class="bigcardbody" >
+                  <div class="bigcardbody">
                     {{currentCard.question}}
                   </div>
-                  <div class="bigcardbottombar" @click.stop="toggleShowAnswer">Click to see answer!</div>
+                  <div class="bigcardbottombar" @click.stop="toggleShowAnswer" >Click to see answer!</div>
                 </div>
-                <div class="bigcard" v-if="showAnswer" >
+                <div class="bigcard" v-if="showAnswer">
                   <div class="bigcardbody" >
+                    <div style="transform: rotateY(180deg);">
                     {{currentCard.answer}}
+                    </div>
                   </div>
                   <div class="bigcardbottombarback" >
-                    <div class="questionwrong" @click.stop="incorrectAnswer()">Wrong</div>
-                    <div class="questionright" @click.stop="correctAnswer()">Correct</div>
+                    <div class="questionwrong" @click.stop="incorrectAnswer(); showAnswer = false;" >
+                      <div style="transform: rotateY(180deg);">Wrong</div>
+                      </div>
+                    <div class="questionright" @click.stop="correctAnswer(); showAnswer = false;" >
+                      <div style="transform: rotateY(180deg);">Correct
+                        </div>
+                      </div>
                   </div>
                 </div>
                 <!-- end of card -->
@@ -86,6 +93,8 @@
 <script>
 import CardService from "@/services/CardService.js";
 import DeckService from "@/services/DeckService.js";
+import VueConfetti from 'vue-confetti';
+
 export default {
   name: "StudySession",
   data() {
@@ -139,7 +148,7 @@ export default {
      },
      setCounterToComplete() {
        this.counter = this.cards.length
-     }
+     },
   },
   computed: {
     currentCard() {
@@ -516,6 +525,6 @@ cardboxarea {
   /* transform: rotateY(180deg); */
 }
 .rotate-card{
-   /* transform: rotateY(180deg); */
+   transform: rotateY(180deg);
 }
 </style>
