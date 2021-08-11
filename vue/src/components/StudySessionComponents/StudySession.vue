@@ -93,7 +93,6 @@
 <script>
 import CardService from "@/services/CardService.js";
 import DeckService from "@/services/DeckService.js";
-import VueConfetti from 'vue-confetti';
 
 export default {
   name: "StudySession",
