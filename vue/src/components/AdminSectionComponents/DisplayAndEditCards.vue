@@ -1,27 +1,21 @@
 <template>
  <div class="editcardsarea">
 
-    <div class="editcardsearchbox">
-      <div class="spacer"></div>
 
-      <input
-        class="cardsfilter"
-        v-model="searchbox"
-        placeholder="Search cards by keywords here"
-      />
-      <div class="cardiconbox">
-        <div class="showallcards" @click="toggleShowAllCardsSelected()">
-          <i class="fas fa-globe"></i>
-        </div>
-        <!-- <div class="collapsecards">
-                    <i class="fas fa-chevron-circle-up"></i>
-                </div> -->
-      </div>
-    </div>
-    
-    <div class="cards">
-      <div class="cardeditbox">
-        <div class="editcardheader">
+
+
+
+   <div class="segmenttitle">Viewing cards in: {{currentDeckName}}</div>
+
+<!--Show Cards In Current Deck-->
+<div class="cards"
+   @drop.prevent
+         @dragover.prevent
+         @drop="onDrop">
+
+
+ <div class="cardeditbox">
+        <div class="editcardheader" >
           <div class="cardnum">Create A New Card Here</div>
 
           <div class="editdeck" @click="onSubmit">
@@ -58,12 +52,129 @@
         </form>
       </div>
 
+
+
+
+
+
       <div
         :class="
           card.deckIds.includes(currentDeckId) && showAllCardsSelected
             ? 'cardeditboxexistsindeck'
             : 'cardeditbox'
         "
+        draggable="true"
+        @dragstart="onDrag(card)"
+        v-for="card in filteredListShowDeck"
+        :key="card.cardId"
+      >
+        <div class="editcardheader">
+          <div class="cardnum">{{ card.question }}</div>
+
+          <div class="editcardsiconbox">
+            <div
+              class="editcardbars"
+              @click="
+                isShowEdit = !isShowEdit;
+                setEditCard(card);
+              "
+            >
+              <i class="fas fa-edit"></i>
+            </div>
+            <div class="deletecard" @click="addOrRemoveCard(card)">
+              <i
+                :class="
+                  card.deckIds.includes(currentDeckId)
+                    ? 'fas fa-minus-circle'
+                    : 'fas fa-plus-circle'
+                "
+              ></i>
+            </div>
+          </div>
+        </div>
+        <div class="editcardbody">
+          {{ card.answer }}
+        </div>
+        <div class="cardskeywordsbox">Keywords: {{ card.keywords }}</div>
+
+        <div v-if="isShowEdit && card.cardId == currentCardId">
+          <div class="editcardheader">
+            <div class="cardnum">Edit Card</div>
+
+            <div class="editdeck" @click="onSubmitEdit">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
+          <form @submit="onSubmitEdit" class="add-deck">
+            <div class="editcardbody">
+              <div class="editquestion">
+                <textarea
+                  class="editinput"
+                  v-model="editCard.question"
+                  name="question"
+                  placeholder="Enter Question..."
+                ></textarea>
+              </div>
+              <div class="editanswer">
+                <textarea
+                  class="editinput"
+                  v-model="editCard.answer"
+                  name="answer"
+                  placeholder="Enter Answer..."
+                ></textarea>
+              </div>
+            </div>
+            <div class="cardskeywordsbox">
+              <input
+                class="cardskeywords"
+                v-model="editCard.keywords"
+                name="keywords"
+                placeholder="Enter Keywords"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+<!-- Search Bar and Search All Cards -->
+
+ <div class="segmenttitle" >Search Cards To Add To {{currentDeckName}}</div>
+    <div class="editcardsearchbox">
+      <div class="spacer"></div>
+
+      <input
+        class="cardsfilter"
+        v-model="searchbox"
+        placeholder="Search cards by keywords here"
+      />
+      <div class="cardiconbox">
+        <div class="showallcards" @click="toggleShowAllCardsSelected()">
+          <i class="fas fa-globe" :style="showAllCardsSelected ? 'color: lightgreen;' : '' "></i>
+        </div>
+        <!-- <div class="collapsecards">
+                    <i class="fas fa-chevron-circle-up"></i>
+                </div> -->
+      </div>
+    </div>
+    
+    <div class="cards">
+      <div
+        :class="
+          card.deckIds.includes(currentDeckId) && showAllCardsSelected
+            ? 'cardeditboxexistsindeck'
+            : 'cardeditbox'"
         draggable="true"
         @dragstart="onDrag(card)"
         v-for="card in filteredList"
@@ -140,16 +251,25 @@
 
 
 
-<div class="drop-zone"
+  <div class="drop-zone"
    v-if="currentDeckId > 0"
    @drop.prevent
    @dragover.prevent
+   @drop="onDrop"
    >
-
    <div><i/>Current Selected Deck: <b>{{currentDeckName}}</b>. Drag and Drop cards here to add to this deck.<i/></div>
-  </div>
+   </div>
 
   
+  
+
+
+
+
+
+
+
+
 
   </div>
 </template>
@@ -166,6 +286,7 @@ export default {
       showAllCardsSelected: false,
       isShowEdit: false,
       currentCardId: "",
+      currentCard: '',
       nCard: {
         question: "",
         answer: "",
@@ -235,8 +356,13 @@ export default {
       this.isShowEdit = false;
     },
     onDrag(card){
-      console.log(card)
-
+      console.log("dragging", card)
+      this.currentCard = card
+      
+    },
+    onDrop(){
+      console.log("dropping",this.currentCard, this.currentDeckId)
+      this.$emit("add-card-to-deck", this.currentCard, this.currentDeckId);
     }
   },
   computed: {
@@ -260,6 +386,36 @@ export default {
             card.keywords
               .toLowerCase()
               .includes(this.searchbox.toLowerCase()) &&
+            !(card.deckIds.includes(this.currentDeckId))
+          );
+        })
+        .slice()
+        .sort(function (a, b) {
+          return a.cardId - b.cardId;
+        });
+    },
+    // filteredListShowAll() {
+    //   return this.cards
+    //     .filter((card) => {
+    //       return (
+    //         card.keywords
+    //           .toLowerCase()
+    //           .includes(this.searchbox.toLowerCase()) &&
+    //         !(card.deckIds.includes(this.currentDeckId))
+    //       );
+    //     })
+    //     .slice()
+    //     .sort(function (a, b) {
+    //       return a.cardId - b.cardId;
+    //     });
+    // },
+    filteredListShowDeck() {
+      return this.cards
+        .filter((card) => {
+          return (
+            card.keywords
+              .toLowerCase()
+              .includes(this.searchbox.toLowerCase()) &&
             card.deckIds.includes(this.currentDeckId)
           );
         })
@@ -269,6 +425,7 @@ export default {
         });
     },
   },
+  
 };
 </script>
 
@@ -280,6 +437,9 @@ export default {
   justify-content: center;
   background: #ffffff;
   width: 100%;
+  border-bottom-color: lightslategray;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
 }
 
 .editcardsarea {
@@ -463,11 +623,18 @@ input:focus {
 
 .drop-zone {
   display: flex;
-  height: 40px;
+  min-height: 40px;
   position: fixed;
   bottom: 0;
-  width: 50%;
+  width: 100%;
   background-color: lightgreen;
   justify-content: center;
+  left: 0;
+  right: 0;
+}
+
+.segmenttitle {
+  padding: 10px;
+  text-align: center
 }
 </style>
