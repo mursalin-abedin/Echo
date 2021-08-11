@@ -60,11 +60,11 @@
 <div class="mainapparea">
     <div class="headerbox">
         <div class="headerboxleft">
-            <div><img class="headerimage" src="../img/LuisAvellana.jpg"></div>
+            <div><img class="headerimage" src="../img/StephanieEaton.jpg"></div>
         </div>
         
         <div class="headerboxright">
-            <div class="headerboxlarge">Luis Avellana</div>
+            <div class="headerboxlarge">Stephanie Eaton</div>
             <div class="headerboxsmall">THIS IS A WALL OF TEXT. THIS IS A WALL OF TEXT. THIS IS A WALL OF TEXT. 
                 THIS IS A WALL OF TEXT. THIS IS A WALL OF TEXT. THIS IS A WALL OF TEXT. THIS IS A WALL OF TEXT. THIS IS A WALL OF TEXT. 
                 THIS IS A WALL OF TEXT. THIS IS A WALL OF TEXT. THIS IS A WALL OF TEXT. THIS IS A WALL OF TEXT. THIS IS A WALL OF TEXT. THIS IS A WALL OF TEXT. 
@@ -79,7 +79,7 @@
 <div class="mainapparea">
     <div class="headerbox">
         <div class="headerboxleft">
-            <div class="headerboxlarge">Luis Avellana</div>
+            <div class="headerboxlarge">Mursalin Abedin</div>
             <div class="headerboxsmall">THIS IS A WALL OF TEXT. THIS IS A WALL OF TEXT. THIS IS A WALL OF TEXT. 
                 THIS IS A WALL OF TEXT. THIS IS A WALL OF TEXT. THIS IS A WALL OF TEXT. THIS IS A WALL OF TEXT. THIS IS A WALL OF TEXT. 
                 THIS IS A WALL OF TEXT. THIS IS A WALL OF TEXT. THIS IS A WALL OF TEXT. THIS IS A WALL OF TEXT. THIS IS A WALL OF TEXT. THIS IS A WALL OF TEXT. 
