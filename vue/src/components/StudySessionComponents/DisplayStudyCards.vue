@@ -59,6 +59,6 @@ margin: 10px 0px 10px 10px;
   font-size: 30pt;
   font-weight: 700;
   color: #e0e0e0;
-  
+border-radius: 57px;
 }
 </style>
