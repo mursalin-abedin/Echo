@@ -351,18 +351,4 @@ nav {
   font-size: 12pt;
 }
 
-@media only screen and (max-width: 850px) {
-  .headerboxleft {
-    display: none !important;
-  }
-  card {
-    width: 100% !important;
-  }
-}
-
-@media only screen and (max-width: 550px) {
-  .headerboxsmall2 {
-    display: none !important;
-  }
-}
 </style>
